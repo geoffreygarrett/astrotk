@@ -1,0 +1,15 @@
+
+\.idea/astrodynamics-toolkit\.iml
+
+\.idea/misc\.xml
+
+\.idea/modules\.xml
+
+\.idea/vcs\.xml
+
+\.idea/workspace\.xml
+
+\.idea/libraries/R_User_Library\.xml
+
+\.pytest_cache
+*.xml

@@ -1,0 +1,102 @@
+{
+  "AU": {
+    "unit": "u.km",
+    "val": 149597870.66
+  },
+  "DS": {
+    "unit": "u.s",
+    "val": 86164.1004
+  },
+  "iDelfi": {
+    "unit": "u.deg",
+    "val": 98.0
+  },
+  "iENVISAT": {
+    "unit": "u.deg",
+    "val": 98.5
+  },
+  "iGPS": {
+    "unit": "u.deg",
+    "val": 55.0
+  },
+  "iISS": {
+    "unit": "u.deg",
+    "val": 51.9
+  },
+  "J2": {
+    "unit": "u.dimensionless_unscaled",
+    "val": 1082.63E-6
+  },
+  "J22": {
+    "unit":"u.dimensionless_unscaled",
+    "val": 1.82E-6
+  },
+  "RE": {
+    "unit": "u.km",
+    "val": 6378.136
+  },
+  "RJupiter": {
+    "unit": "u.km",
+    "val": 71492.0
+  },
+  "RMars": {
+    "unit": "u.km",
+    "val": 3397.0
+  },
+  "RSun":{
+    "unit": "u.km",
+    "val": 6.96033E5
+  },
+  "rJupiter":{
+    "unit": "AU",
+    "val": 5.20336301
+  },
+  "rMars":{
+    "unit": "AU",
+    "val": 1.52366231
+  },
+  "SC":{
+    "unit": "u.W/u.m/u.m",
+    "val": 1367.0
+  },
+  "latBaikonur":{
+    "unit": "u.deg",
+    "val": 45.6
+  },
+  "latDelft":{
+    "unit": "u.deg",
+    "val": 52.0
+  },
+  "latKSC":{
+    "unit": "u.deg",
+    "val": 28.5
+  },
+  "latPlesetsk":{
+    "unit": "u.deg",
+    "val": 62.8
+  },
+  "lonDelft":{
+    "unit": "u.deg",
+    "val": 4.3
+  },
+  "coeff22":{
+    "unit": "u.deg",
+    "val": -14.9
+  },
+  "muEarth":{
+    "unit": "u.km ** 3 / u.s / u.s",
+    "val": 398600.441
+  },
+  "muJupiter":{
+    "unit": "u.km ** 3 / u.s / u.s",
+    "val": 1.2669E8
+  },
+  "muMars":{
+    "unit": "u.km ** 3 / u.s / u.s",
+    "val": 4.2832E4
+  },
+  "muSun":{
+    "unit": "u.km ** 3 / u.s / u.s",
+    "val": 1.327178E11
+  }
+}

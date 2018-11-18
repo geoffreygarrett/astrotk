@@ -1,0 +1,167 @@
+""" test_state.py
+"""
+
+# Imports -------------------------------------------------------------------------------------------------------------#
+import pytest
+from astrotk.AE4878.bodies import Earth
+from astrotk.twobody.state import vector
+from astrotk.tests.test_state_values import *
+
+
+# Helper tool ---------------------------------------------------------------------------------------------------------#
+def rounding_precision(expected):
+    return eval('10E-{}'.format(len(str(expected).split('.')[1]) + 1))
+
+
+# Testing tool --------------------------------------------------------------------------------------------------------#
+def test_rounding_precision():
+    assert 10E-4 == rounding_precision(1.00 + 10E-4)
+
+
+# Test 1 --------------------------------------------------------------------------------------------------------------#
+Test1ClassicalState = vector.VectorState(Earth(), *Test1Vector).to_classical()
+Test1VectorState = Test1ClassicalState.to_vectors()
+
+
+class Test1Vector2Classical(object):
+
+    def setup_method(self, method):
+        print("\n%s:%s" % (type(self).__name__, method.__name__))
+
+    def teardown_method(self, method):
+        print("{} passed".format(method.__name__))
+        pass
+
+    def test_vector2classical_a(self):
+        actual = Test1ClassicalState.a.si.value
+        expect = Test1Classical[0].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_e(self):
+        actual = Test1ClassicalState.e.si.value
+        expect = Test1Classical[1].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_inc(self):
+        actual = Test1ClassicalState.inc.to('deg').value
+        expect = Test1Classical[2].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_raan(self):
+        actual = Test1ClassicalState.raan.to('deg').value
+        expect = Test1Classical[3].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_argp(self):
+        actual = Test1ClassicalState.argp.to('deg').value
+        expect = Test1Classical[4].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_theta(self):
+        actual = Test1ClassicalState.theta.to('deg').value
+        expect = Test1Classical[5].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_E(self):
+        actual = Test1ClassicalState.E.to('deg').value
+        expect = Test1Classical[6].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_M(self):
+        actual = Test1ClassicalState.M.to('deg').value
+        expect = Test1Classical[7].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+
+class Test1Classical2Vector(object):
+
+    def setup_method(self, method):
+        print("\n%s:%s" % (type(self).__name__, method.__name__))
+
+    def teardown_method(self, method):
+        print("{} passed".format(method.__name__))
+        pass
+
+    def test_classical2vector_r_vec(self):
+        actual = Test1VectorState.r_vec.si.value
+        expect = Test1Vector[0].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect[0])) == actual
+
+    def test_classical2vector_v_vec(self):
+        actual = Test1VectorState.v_vec.si.value
+        expect = Test1Vector[1].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect[0])) == actual
+
+
+# Test Case 2 ---------------------------------------------------------------------------------------------------------#
+Test2ClassicalState = vector.VectorState(Earth(), *Test2Vector).to_classical()
+Test2VectorState = Test2ClassicalState.to_vectors()
+
+class Test2Vector2Classical(object):
+
+    def setup_method(self, method):
+        print("\n%s:%s" % (type(self).__name__, method.__name__))
+
+    def teardown_method(self, method):
+        print("{} passed".format(method.__name__))
+        pass
+
+    def test_vector2classical_a(self):
+        actual = Test2ClassicalState.a.si.value
+        expect = Test2Classical[0].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_e(self):
+        actual = Test2ClassicalState.e.si.value
+        expect = Test2Classical[1].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_inc(self):
+        actual = Test2ClassicalState.inc.to('deg').value
+        expect = Test2Classical[2].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_raan(self):
+        actual = Test2ClassicalState.raan.to('deg').value
+        expect = Test2Classical[3].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_argp(self):
+        actual = Test2ClassicalState.argp.to('deg').value
+        expect = Test2Classical[4].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_theta(self):
+        actual = Test2ClassicalState.theta.to('deg').value
+        expect = Test2Classical[5].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_E(self):
+        actual = Test2ClassicalState.E.to('deg').value
+        expect = Test2Classical[6].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_M(self):
+        actual = Test2ClassicalState.M.to('deg').value
+        expect = Test2Classical[7].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+
+class Test2Classical2Vector(object):
+
+    def setup_method(self, method):
+        print("\n%s:%s" % (type(self).__name__, method.__name__))
+
+    def teardown_method(self, method):
+        print("{} passed".format(method.__name__))
+        pass
+
+    def test_classical2vector_r_vec(self):
+        actual = Test2VectorState.r_vec.si.value
+        expect = Test2Vector[0].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect[0])) == actual
+
+    def test_classical2vector_v_vec(self):
+        actual = Test2VectorState.v_vec.si.value
+        expect = Test2Vector[1].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect[0])) == actual
