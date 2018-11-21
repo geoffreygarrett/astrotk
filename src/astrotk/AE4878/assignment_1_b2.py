@@ -24,11 +24,14 @@ vector_state_1 = vector.VectorState(
     v_vec=np.array([xdot, ydot, zdot]) * u.m / u.s
 )
 
+# Print ClassicalState LaTeX table (for given table).
+# print(vector_state_1.latex(30))
+
 # Convert VectorState object into ClassicalState object.
 classical_state_1 = vector_state_1.to_classical()
 
 # Print ClassicalState LaTeX table.
-print(classical_state_1.latex())
+print(classical_state_1.latex(20))
 
 """
 Question 2
@@ -53,18 +56,8 @@ classical_state_2 = classical.ClassicalState(
 )
 
 # Convert ClassicalState object into VectorState object.
-print(classical_state_2.latex(10))
+vector_state_2 = classical_state_2.to_vectors()
 
+# Print VectorState LaTeX table.
+print(vector_state_2.latex(10))
 
-# Print ClassicalState LaTeX table.
-# print(vector_state_2.latex())
-print(vector_state_2.r_vec)
-print(vector_state_2.v_vec)
-
-
-# 12158817.9615
-# .014074320051
-# 52.666016957
-# 323.089150643
-# 148.382589129
-# 112.192638384

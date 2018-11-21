@@ -6,6 +6,7 @@ from sympy import latex
 import pandas as pd
 import numpy as np
 # from astrotk.twobody.utils import
+from math import floor,log10
 
 dict_latex = {
     '_a': "$a$",
@@ -48,25 +49,50 @@ def prettytable_state(state):
 
 
 def sig_fig(value: float, sf: int) -> float:
-    # TODO: sig_fig(1.2345, 1) returns 1.0. Should be 1
-    rounded_str = str(float('%s' % float('%.{}g'.format(sf) % value)))
-    if '-' in rounded_str:
-        addon = 2
+    """Round to specified number of sigfigs.
+
+    >>> sig_fig(0, sf=4)
+    0
+    >>> int(sig_fig(12345, sf=2))
+    12000
+    >>> int(sig_fig(-12345, sf=2))
+    -12000
+    >>> int(sig_fig(1, sf=2))
+    1
+    >>> '{0:.3}'.format(sig_fig(3.1415, sf=2))
+    '3.1'
+    >>> '{0:.3}'.format(sig_fig(-3.1415, sf=2))
+    '-3.1'
+    >>> '{0:.5}'.format(sig_fig(0.00098765, sf=2))
+    '0.00099'
+    >>> '{0:.6}'.format(sig_fig(0.00098765, sf=3))
+    '0.000988'
+    """
+    if value != 0:
+        return round(value, -int(floor(log10(abs(value))) - (sf - 1)))
     else:
-        addon = 1
-    if ('.' in rounded_str) and (len(rounded_str) != sf + addon):
-        rounded_str = rounded_str + '0' * (sf - len(rounded_str) + addon)
-    return float(rounded_str)
+        return 0  # Can't take the log of 0
 
 
 def latex(state, sf=10):
-    df = pd.DataFrame.from_dict(vars(state), orient='index', columns=['value']).reset_index()
-    df = df.rename(index=str, columns={"index": "element"})
-    df = df.iloc[1:]
+    if type(state).__name__ is "VectorState":
+        data = {"$r_x$": state.r_vec[0],
+                "$r_y$": state.r_vec[1],
+                "$r_z$": state.r_vec[2],
+                "$V_x$": state.v_vec[0],
+                "$V_y$": state.v_vec[1],
+                "$V_z$": state.v_vec[2]}
+        df = pd.DataFrame.from_dict(data, orient='index', columns=['value']).reset_index()
+        df = df.rename(index=str, columns={"index": "element"})
+    else:
+        df = pd.DataFrame.from_dict(vars(state), orient='index', columns=['value']).reset_index()
+        df = df.rename(index=str, columns={"index": "element"})
+        df = df.iloc[1:]
+    df.value = df.value.apply(lambda x: x.si.value * x.si.unit)
     df.value = df.value.apply(lambda x: x.to(dict_quantity[str(x.si.unit)]) if str(x.si.unit) in
                                                                                set(dict_quantity.keys()) else x)
     df.value = df.value.apply(lambda x: sig_fig(x.value, sf) * x.unit)
-    df.element = df.element.apply(lambda x: dict_latex[x])
+    df.element = df.element.apply(lambda x: dict_latex[x] if x in set(dict_latex.keys()) else x)
     return df.to_latex(escape=False, index=False)
 
 
