@@ -196,9 +196,10 @@ class BaseState(object):
         :return: <astropy.units.Quantity> Eccentric anomaly (E)
         """
         try:
-            return OrbitalExpressions().E(self.e.value, theta=self.theta.value) * u.rad
+            E = OrbitalExpressions().E(self.e.value, theta=self.theta.value) * u.rad
         except AttributeError:
-            return OrbitalExpressions().E(self.e.value, M=self.M.value) * u.rad
+            E = OrbitalExpressions().E(self.e.value, M=self.M.value) * u.rad
+        return formatting.positive_angle(E.si.value) * u.rad
 
     @property
     def M(self):
@@ -216,8 +217,8 @@ class BaseState(object):
     def prettyprint(self):
         print(self.prettytable())
 
-    def latex(self):
-        return formatting.latex(self)
+    def latex(self, sf=10):
+        return formatting.latex(self, sf)
 
 
     """

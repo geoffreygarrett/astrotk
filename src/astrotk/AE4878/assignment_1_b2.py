@@ -53,4 +53,18 @@ classical_state_2 = classical.ClassicalState(
 )
 
 # Convert ClassicalState object into VectorState object.
-vector_state_2 = classical_state_2.to_vectors()
+print(classical_state_2.latex(10))
+
+
+# Print ClassicalState LaTeX table.
+# print(vector_state_2.latex())
+print(vector_state_2.r_vec)
+print(vector_state_2.v_vec)
+
+
+# 12158817.9615
+# .014074320051
+# 52.666016957
+# 323.089150643
+# 148.382589129
+# 112.192638384

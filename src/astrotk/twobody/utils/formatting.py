@@ -4,6 +4,8 @@ from copy import deepcopy
 import sympy
 from sympy import latex
 import pandas as pd
+import numpy as np
+# from astrotk.twobody.utils import
 
 dict_latex = {
     '_a': "$a$",
@@ -46,36 +48,27 @@ def prettytable_state(state):
 
 
 def sig_fig(value: float, sf: int) -> float:
-    before, after = str(value).split('.')
-    n_b, n_a = len(before), len(after)
-    if sf < n_b:
-        return int(((int(before[:sf]) + 1) * eval('1E{}'.format(n_b - sf)) if int(before[sf]) >= 5 else
-                  (int(before[:sf])) * eval('1E{}'.format(n_b - sf))))
-
-    elif sf == n_b:
-        return int(before) + 1 if int(after[0]) >= 5 else int(before)
-
-    elif sf > n_b:
-        n_d = sf - n_b +1
-        try:
-            return (float("0."+str(int(after[:n_d]) + 1)) if int(after[n_d+1]) >= 5 else
-                    float("0."+str(int(after[:n_d]))))
-        except IndexError:
-            return float("0." + str(int(after[:n_d])))
+    # TODO: sig_fig(1.2345, 1) returns 1.0. Should be 1
+    rounded_str = str(float('%s' % float('%.{}g'.format(sf) % value)))
+    if '-' in rounded_str:
+        addon = 2
+    else:
+        addon = 1
+    if ('.' in rounded_str) and (len(rounded_str) != sf + addon):
+        rounded_str = rounded_str + '0' * (sf - len(rounded_str) + addon)
+    return float(rounded_str)
 
 
 def latex(state, sf=10):
     df = pd.DataFrame.from_dict(vars(state), orient='index', columns=['value']).reset_index()
-    df = df.rename(index=str, columns={"index":"element"})
+    df = df.rename(index=str, columns={"index": "element"})
     df = df.iloc[1:]
-    print(df)
-    df.value = df.value.apply(lambda x: u.Quantity.round(x, 10))
+    df.value = df.value.apply(lambda x: x.to(dict_quantity[str(x.si.unit)]) if str(x.si.unit) in
+                                                                               set(dict_quantity.keys()) else x)
+    df.value = df.value.apply(lambda x: sig_fig(x.value, sf) * x.unit)
     df.element = df.element.apply(lambda x: dict_latex[x])
-    print(df.to_latex(escape=False, index=False))
-    # df.value = df[0].apply(lambda x: )
-    return df
+    return df.to_latex(escape=False, index=False)
 
 
-# if __name__ == "__main__":
-
-
+def positive_angle(angle_rad):
+    return angle_rad + 2 * np.pi if angle_rad <= 0 else angle_rad
