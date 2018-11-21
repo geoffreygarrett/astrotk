@@ -12,6 +12,9 @@ class _Body(object):
         self._R = R
         self._parent_body = parent_body
 
+    def __str__(self):
+        return type(self).__name__
+
     @property
     def mu(self):
         """

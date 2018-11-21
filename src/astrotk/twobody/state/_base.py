@@ -1,7 +1,8 @@
 """ _base.py
 """
-
-# Authorship ----------------------------------------------------------------------------------------------------------#
+"""
+Authorship
+"""
 __author__ = "Geoffrey Hyde Garrett"
 __copyright__ = None
 __credits__ = "Reference [1]"
@@ -11,46 +12,52 @@ __maintainer__ = "Geoffrey Hyde Garrett"
 __email__ = "g.h.garrett13@gmail.com"
 __status__ = "Pre-alpha"
 
-# References ----------------------------------------------------------------------------------------------------------#
+"""
+References
 # [1] Juanlu001 et al., poliastro, (2018), GitHub repository, https://github.com/poliastro/poliastro
+"""
 
-
-# Acknowledgement  ----------------------------------------------------------------------------------------------------#
+"""
+Acknowledgements
 # Style and structure was inspired from poliastro, a tool I spent the entirety of my bachelor's thesis using for
 # interplanetary trajectories to Pluto.
+"""
 
-
-# Imports
+"""
+Imports 
+"""
 from astrotk.twobody.utils import OrbitalExpressions
 from astrotk.twobody.utils import formatting
 import astropy.units as u
 
 
-# Class ---------------------------------------------------------------------------------------------------------------#
 class BaseState(object):
+    """
+    Private BaseState class is defined to provide Classical, Spherical and Vector elements as accessible to all children
+    classes. This specific style is adapted from [1] and proves to be highly effective for higher level analysis in
+    Python. This BaseState belongs to the astrotk/twobody module and thus can only be used as such.
+    """
     def __init__(self, attractor):
         """
-        Two-body problem base state representation, to be inherited by other state representations. Attractor must be
-        defined as the geometry of the state is only transformable to another representation given the constant mu.
-        :param attractor:
+        :param attractor: astrotk.AE4878.bodies._Body() object.
+        TODO: Create a general module that defines characteristics of all bodies in the Solar System.
         """
         self._attractor = attractor
-        self._orbital_expressions = OrbitalExpressions()
 
     def _get_state_values(self):
+        """
+        :return: Returns a astropy.Quantities list of all parameters defining the current state type.
+        TODO: Bring this code into another helper script.
+        """
         temp = self.__dict__
         temp.pop('_orbital_expressions')
         temp.pop('_attractor')
         keys = list(temp.keys())
         return [temp[keys[i]] for i in range(len(keys))]
 
-    def prettytable(self):
-        return formatting.prettytable_state(self)
-
-    def prettyprint(self):
-        print(self.prettytable())
-
-    # Cartesian vector state properties -------------------------------------------------------------------------------#
+    """
+    Cartesian vectors
+    """
     @property
     def r_vec(self):
         """
@@ -67,7 +74,9 @@ class BaseState(object):
         """
         return self.to_vectors().v
 
-    # Spherical coordinate state properties ---------------------------------------------------------------------------#
+    """
+    Spherical components
+    """
     @property
     def radius(self):
         """
@@ -110,7 +119,9 @@ class BaseState(object):
         """
         return self.to_spherical().azi
 
-    # Classical orbital element properties ----------------------------------------------------------------------------#
+    """
+    Classical orbital elements
+    """
     @property
     def a(self):
         """
@@ -153,41 +164,65 @@ class BaseState(object):
         """
         return self.to_classical().theta
 
-    # Other orbital properties ----------------------------------------------------------------------------------------#
+    """
+    Other Classical orbital elements
+    """
     @property
     def r_p(self):
         """
-        Radius of periapsis (r_p)
-        :return:
+        :return: <astropy.units.Quantity> Radius of periapsis (r_p)
         """
-        return self._orbital_expressions.r_p(self.a.to(u.m).value, self.e.to(u.dimensionless_unscaled).value) * u.m
+        # TODO: Add an error exception/catch for Hyperbolic & Parabolic orbits.
+        return OrbitalExpressions().r_p(self.a.to(u.m).value, self.e.to(u.dimensionless_unscaled).value) * u.m
 
     @property
     def r_a(self):
         """
-        Radius of apoapsis (r_a)
-        :return:
+        :return: <astropy.units.Quantity> Radius of apoapsis (r_a)
         """
-        return self._orbital_expressions.r_a(self.a.to(u.m).value, self.e.to(u.dimensionless_unscaled).value) * u.m
+        return OrbitalExpressions().r_a(self.a.to(u.m).value, self.e.to(u.dimensionless_unscaled).value) * u.m
 
     @property
     def tau(self, time_now=None):
         """
-        "" TODO: Complete this in appropriate time system.
-        Time of periapsis passage (τ)
-        :return:
+        :return: <astropy.units.Quantity> Time of periapsis passage (τ)
         """
-        return self._orbital_expressions.tau(time_now, self.e, self.theta, self._attractor.mu, self.a) * u.s
+        # TODO: Determine the time system to be used. (consider use of astropy.time.Time(scale=tdb))
+        return OrbitalExpressions().tau(time_now, self.e, self.theta, self._attractor.mu, self.a) * u.s
 
     @property
     def E(self):
-        return self._orbital_expressions.E(self.e.value, self.theta.value) * u.rad
+        """
+        :return: <astropy.units.Quantity> Eccentric anomaly (E)
+        """
+        try:
+            return OrbitalExpressions().E(self.e.value, theta=self.theta.value) * u.rad
+        except AttributeError:
+            return OrbitalExpressions().E(self.e.value, M=self.M.value) * u.rad
 
     @property
     def M(self):
-        return self._orbital_expressions.M(self.e.value, self.theta.value) * u.rad
+        """
+        :return: <astropy.units.Quantity> Mean anomaly (M)
+        """
+        return OrbitalExpressions().M(self.e.value, self.theta.value) * u.rad
 
-    # Methods ---------------------------------------------------------------------------------------------------------#
+    """
+    Print format options
+    """
+    def prettytable(self):
+        return formatting.prettytable_state(self)
+
+    def prettyprint(self):
+        print(self.prettytable())
+
+    def latex(self):
+        return formatting.latex(self)
+
+
+    """
+    Method placeholders to be overwritten by children classes.
+    """
     def to_vectors(self):
         raise NotImplementedError("{} is not a standalone object; purpose = inheritance.".format(type(self).__name__))
 

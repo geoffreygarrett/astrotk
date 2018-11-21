@@ -17,8 +17,8 @@ def spherical2vector(radius, ra, de, v, fpa, azi):
     _x = _r * _cos_de * _cos_ra
     _y = _r * _cos_de * _sin_ra
     _z = _r * _sin_de
-    # _v_x =
-    return np.array([_x, _y, _z]), np.array([None, None, None])
+
+    return np.array([_x, _y, _z]), np.array([1.0, 1.0, 1.0])
     # raise NotImplementedError("Haven't transformed the velocity yet.")
     # return VectorState(_x, _y, _z, _v_x, _v_y, _v_z)
 

@@ -13,13 +13,14 @@ __status__ = "Pre-alpha"
 
 # References ----------------------------------------------------------------------------------------------------------#
 # [1] Wakker, K. (2015). Fundamentals of astrodynamics. TU Delft Library. Page 681
-
+import numpy as np
 
 # Acknowledgement  ----------------------------------------------------------------------------------------------------#
 
 
 # Imports  ------------------------------------------------------------------------------------------------------------#
 from math import cos, tan, atan, sqrt, acos, atanh, sin, sinh, pi
+from astrotk.twobody.utils.tools import rounding_precision
 
 
 # Class ---------------------------------------------------------------------------------------------------------------#
@@ -60,6 +61,11 @@ class OrbitalExpressions:
         elif _orbit_type is "Parabolic":
             return sqrt(mu / ((a * (1 - e ** 2)) ** 3))
 
+    def theta(self, e, _M):
+        E = self.E(e, M=_M)
+        theta = 2 * atan(sqrt((1+e)/(1-e)) * tan(E/2))
+        return 2 * pi + theta if theta <= 0 else theta
+
     def r_p(self, a, e):
         """
         :param a:
@@ -91,14 +97,26 @@ class OrbitalExpressions:
                     self.orbit_type(e))
             )
 
-    def E(self, e, theta):
+    @staticmethod
+    def E(e, theta=None, M=None):
         """
         :param e:
         :param theta:
         :return: Eccentric anomaly (E)
         """
-        E = 2 * atan(sqrt((1 - e) / (1 + e)) * tan(theta / 2))
-        return E + 2 * pi if E <= 0 else E
+        if theta:
+            E = 2 * atan(sqrt((1 - e) / (1 + e)) * tan(theta / 2))
+        elif M:
+            dE = 1
+            E = M
+            while abs(dE) >= 10E-2 * rounding_precision(M):
+                E_old = E
+                E = E - (E - e * sin(E) - M)/(1-e*cos(E))
+                dE = E - E_old
+
+        else:
+            raise SystemError("Theta or M must be given.")
+        return E
 
     def F(self, e, theta):
         """
@@ -128,6 +146,7 @@ class OrbitalExpressions:
 
     def dt(self, e, theta, mu, a):
         return self.M(e, theta) / self.n(mu, a, e)
+
     # TODO: Complete and add test for dt calculation.
 
     def tau(self, time, e, theta, mu, a):

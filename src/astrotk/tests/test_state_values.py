@@ -11,7 +11,6 @@ Test1Classical = [
     24.08317766 * u.deg,
     24.06608426 * u.deg
 ]
-
 Test1Vector = [
     np.array([
         -2700816.14,

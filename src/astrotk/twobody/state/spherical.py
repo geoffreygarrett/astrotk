@@ -89,12 +89,12 @@ class SphericalState(BaseState):
 
     # Method updates --------------------------------------------------------------------------------------------------#
     def to_vectors(self):
-        r_vec, v_vec = spherical2vector(self._radius.to(u.m).value,
-                                        self._ra.to(u.dimensionless_unscaled).value,
-                                        self._de.to(u.rad).value,
-                                        self._v.to(u.rad).value,
-                                        self._fpa.to(u.rad).value,
-                                        self._azi.to(u.rad).value)
+        r_vec, v_vec = spherical2vector(self._radius.si.value,
+                                        self._ra.si.value,
+                                        self._de.si.value,
+                                        self._v.si.value,
+                                        self._fpa.si.value,
+                                        self._azi.si.value)
         return vector.VectorState(self._attractor, r_vec * u.m, v_vec * u.m / u.s)
 
     def to_spherical(self):
@@ -102,12 +102,12 @@ class SphericalState(BaseState):
 
     def to_classical(self):
         a, e, inc, raan, argp, theta = vector2classical(
-            *spherical2vector(self._radius.to(u.m).value,
-                              self._ra.to(u.dimensionless_unscaled).value,
-                              self._de.to(u.rad).value,
-                              self._v.to(u.rad).value,
-                              self._fpa.to(u.rad).value,
-                              self._azi.to(u.rad).value)
+            *spherical2vector(self._radius.si.value,
+                              self._ra.si.value,
+                              self._de.si.value,
+                              self._v.si.value,
+                              self._fpa.si.value,
+                              self._azi.si.value), self._attractor.mu.si.value
         )
         return classical.ClassicalState(self._attractor,
                                         a * u.m,

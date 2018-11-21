@@ -1,7 +1,8 @@
 """ vector.py
 """
-
-# Authorship ----------------------------------------------------------------------------------------------------------#
+"""
+Authorship
+"""
 __author__ = "Geoffrey Hyde Garrett"
 __copyright__ = None
 __credits__ = "Reference [1]"
@@ -11,25 +12,27 @@ __maintainer__ = "Geoffrey Hyde Garrett"
 __email__ = "g.h.garrett13@gmail.com"
 __status__ = "Pre-alpha"
 
-# References ----------------------------------------------------------------------------------------------------------#
+"""
 # [1] Juanlu001 et al., poliastro, (2018), GitHub repository, https://github.com/poliastro/poliastro
+"""
 
-
-# Acknowledgement  ----------------------------------------------------------------------------------------------------#
+"""
+Acknowledgments
 # Style and structure was inspired from poliastro, a tool I spent the entirety of my bachelor's thesis using for
 # interplanetary trajectories to Pluto.
+"""
 
-# Imports -------------------------------------------------------------------------------------------------------------#
+"""
+Imports
+"""
 from ._base import BaseState
 import astropy.units as u
 from astrotk.twobody.utils import vector2classical
 from astrotk.twobody.utils import vector2spherical
-from astrotk.twobody.utils import spherical2vector
 from astrotk.twobody.state import classical
 from astrotk.twobody.state import spherical
 
 
-# Class ---------------------------------------------------------------------------------------------------------------#
 class VectorState(BaseState):
     def __init__(self, attractor, r_vec, v_vec):
         """
@@ -41,7 +44,9 @@ class VectorState(BaseState):
         self._r_vec = r_vec
         self._v_vec = v_vec
 
-    # Property overrides ----------------------------------------------------------------------------------------------#
+    """
+    Property overrides
+    """
     @property
     def r_vec(self):
         """
@@ -56,7 +61,9 @@ class VectorState(BaseState):
         """
         return self._v_vec
 
-    # Method updates --------------------------------------------------------------------------------------------------#
+    """
+    Method overrides
+    """
     def to_vectors(self):
         return self
 

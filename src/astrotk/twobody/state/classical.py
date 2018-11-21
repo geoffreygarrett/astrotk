@@ -24,13 +24,14 @@ from ._base import BaseState
 import astropy.units as u
 from astrotk.twobody.utils import vector2spherical
 from astrotk.twobody.utils import classical2vector
+from astrotk.twobody.utils import OrbitalExpressions
 from astrotk.twobody.state import spherical
 from astrotk.twobody.state import vector
 
 
 # Class ---------------------------------------------------------------------------------------------------------------#
 class ClassicalState(BaseState):
-    def __init__(self, attractor, a, e, inc, raan, argp, theta):
+    def __init__(self, attractor, a, e, inc, raan, argp, theta=None, **kwargs):
         """
         Two-body problem classical state representation, to be inherited by other state representations. Attractor must
         be defined as the geometry of the state is only transformable to another representation given the constant mu.
@@ -42,7 +43,13 @@ class ClassicalState(BaseState):
         self._inc = inc
         self._raan = raan
         self._argp = argp
-        self._theta = theta
+        if theta is not None:
+            self._theta = theta
+        else:
+            try:
+                self._theta = OrbitalExpressions().theta(self._e.value, kwargs["M"].si.value) * u.rad
+            except KeyError:
+                raise SystemError("If theta is not defined then M must be for instantiation of ClassicalState.")
 
     # Property overrides ----------------------------------------------------------------------------------------------#
     @property
@@ -108,7 +115,8 @@ class ClassicalState(BaseState):
                               self._theta.to(u.rad).value,
                               self._attractor.mu.to(u.m ** 3 / u.s / u.s).value)
         )
-        return spherical.SphericalState(r * u.m,
+        return spherical.SphericalState(self._attractor,
+                                        r * u.m,
                                         ra * u.rad,
                                         de * u.rad,
                                         v * u.m / u.s,

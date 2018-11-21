@@ -1,30 +1,41 @@
 """ test_state.py
 """
-
-# Imports -------------------------------------------------------------------------------------------------------------#
+"""
+Imports
+"""
 import pytest
 from astrotk.AE4878.bodies import Earth
 from astrotk.twobody.state import vector
 from astrotk.tests.test_state_values import *
 
 
-# Helper tool ---------------------------------------------------------------------------------------------------------#
 def rounding_precision(expected):
+    """
+    Helper tool for ensuring all equations tested fairly according to given rounding precision.
+    """
     return eval('10E-{}'.format(len(str(expected).split('.')[1]) + 1))
 
 
-# Testing tool --------------------------------------------------------------------------------------------------------#
 def test_rounding_precision():
+    """
+    Testing the helper tool for expected results.
+    :return: None
+    """
     assert 10E-4 == rounding_precision(1.00 + 10E-4)
 
 
-# Test 1 --------------------------------------------------------------------------------------------------------------#
+"""
+Test Case 1: State-vector International Space Station on June 12, 2014, 12:00:00 hrs [NASA, 2014]
+"""
 Test1ClassicalState = vector.VectorState(Earth(), *Test1Vector).to_classical()
 Test1VectorState = Test1ClassicalState.to_vectors()
 
 
 class Test1Vector2Classical(object):
-
+    """
+    Provided state-vector is converted to Classical and tested according to the values provided in AE4878 using pytest.
+    [ae4-878: basics, slide 20]
+    """
     def setup_method(self, method):
         print("\n%s:%s" % (type(self).__name__, method.__name__))
 
@@ -74,7 +85,10 @@ class Test1Vector2Classical(object):
 
 
 class Test1Classical2Vector(object):
-
+    """
+    The resulting Classical state is transformed back to vector state in order to verify Classical orbital element
+    conversion back to Cartesian vectors.
+    """
     def setup_method(self, method):
         print("\n%s:%s" % (type(self).__name__, method.__name__))
 
@@ -93,12 +107,18 @@ class Test1Classical2Vector(object):
         assert pytest.approx(expect, abs=rounding_precision(expect[0])) == actual
 
 
-# Test Case 2 ---------------------------------------------------------------------------------------------------------#
+"""
+Test 2: State-vector Cryosat-2 on June 13, 2014, 14:59:21 hrs [NORAD, 2014]
+"""
 Test2ClassicalState = vector.VectorState(Earth(), *Test2Vector).to_classical()
 Test2VectorState = Test2ClassicalState.to_vectors()
 
-class Test2Vector2Classical(object):
 
+class Test2Vector2Classical(object):
+    """
+    Provided state-vector is converted to Classical and tested according to the values provided in AE4878 using pytest.
+    [ae4-878: basics, slide 21]
+    """
     def setup_method(self, method):
         print("\n%s:%s" % (type(self).__name__, method.__name__))
 
@@ -148,7 +168,10 @@ class Test2Vector2Classical(object):
 
 
 class Test2Classical2Vector(object):
-
+    """
+    The resulting Classical state is transformed back to vector state in order to verify Classical orbital element
+    conversion back to Cartesian vectors.
+    """
     def setup_method(self, method):
         print("\n%s:%s" % (type(self).__name__, method.__name__))
 
