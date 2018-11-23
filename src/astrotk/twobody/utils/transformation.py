@@ -5,7 +5,6 @@ from .orbital_expressions import OrbitalExpressions
 
 def spherical2vector(radius, ra, de, v, fpa, azi):
     """
-
     :param _spherical_state:
     :return:
     """

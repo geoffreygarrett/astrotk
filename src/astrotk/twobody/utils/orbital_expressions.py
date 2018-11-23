@@ -109,7 +109,7 @@ class OrbitalExpressions:
         elif M:
             dE = 1
             E = M
-            while abs(dE) >= 10E-2 * rounding_precision(M):
+            while abs(dE) >= max([10E-5 * rounding_precision(M), 10E-12]):
                 E_old = E
                 E = E - (E - e * sin(E) - M)/(1-e*cos(E))
                 dE = E - E_old

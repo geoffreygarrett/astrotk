@@ -46,3 +46,25 @@ Test2Vector = [
         7485.70674
     ]) * u.m / u.s
 ]
+
+Test3Vector = [
+    np.array([
+        -6045,
+        -3490,
+        +2500
+    ]) * u.km,
+    np.array([
+        -3.457,
+        +6.618,
+        +2.533
+    ]) * u.km / u.s
+]
+
+Test3Classical = [
+    8788 * u.km,
+    0.1712 * u.dimensionless_unscaled,
+    153.2 * u.deg,
+    255.3 * u.deg,
+    20.07 * u.deg,
+    28.45 * u.deg
+]

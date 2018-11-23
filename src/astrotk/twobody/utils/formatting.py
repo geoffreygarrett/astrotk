@@ -40,7 +40,6 @@ def _prettytable_map(dict):
 
 def prettytable_state(state):
     _temp = deepcopy(state.__dict__)
-    _temp.pop('_orbital_expressions')
     _temp.pop('_attractor')
     _keys = list(_temp.keys())
     _dict = dict([(k, v) for k, v in zip(_keys, [_temp[_keys[i]] for i in range(len(_keys))])])

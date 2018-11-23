@@ -27,7 +27,9 @@ def test_rounding_precision():
 """
 Test Case 1: State-vector International Space Station on June 12, 2014, 12:00:00 hrs [NASA, 2014]
 """
-Test1ClassicalState = vector.VectorState(Earth(), *Test1Vector).to_classical()
+Test1ClassicalState = vector.VectorState(Earth(), *Test1Vector)
+print(Test1ClassicalState.latex(20))
+Test1ClassicalState = Test1ClassicalState.to_classical()
 Test1VectorState = Test1ClassicalState.to_vectors()
 
 
@@ -187,4 +189,77 @@ class Test2Classical2Vector(object):
     def test_classical2vector_v_vec(self):
         actual = Test2VectorState.v_vec.si.value
         expect = Test2Vector[1].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect[0])) == actual
+
+"""
+Test 3: Curtis, H. Orbital mechanics for engineering students (p. 108).
+"""
+Test3ClassicalState = vector.VectorState(Earth(), *Test3Vector).to_classical()
+Test3VectorState = Test3ClassicalState.to_vectors()
+
+
+class Test3Vector2Classical(object):
+    """
+    Provided state-vector is converted to Classical and tested according to the values provided in AE4878 using pytest.
+    [ae4-878: basics, slide 21]
+    """
+    def setup_method(self, method):
+        print("\n%s:%s" % (type(self).__name__, method.__name__))
+
+    def teardown_method(self, method):
+        print("{} passed".format(method.__name__))
+        pass
+
+    def test_vector2classical_a(self):
+        actual = Test3ClassicalState.a.si.value
+        expect = Test3Classical[0].si.value
+        assert pytest.approx(expect, abs=10E2) == actual
+        # TODO: Solve Curtis significant figures detection problem.
+
+    def test_vector2classical_e(self):
+        actual = Test3ClassicalState.e.si.value
+        expect = Test3Classical[1].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_inc(self):
+        actual = Test3ClassicalState.inc.to('deg').value
+        expect = Test3Classical[2].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_raan(self):
+        actual = Test3ClassicalState.raan.to('deg').value
+        expect = Test3Classical[3].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_argp(self):
+        actual = Test3ClassicalState.argp.to('deg').value
+        expect = Test3Classical[4].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+    def test_vector2classical_theta(self):
+        actual = Test3ClassicalState.theta.to('deg').value
+        expect = Test3Classical[5].to('deg').value
+        assert pytest.approx(expect, abs=rounding_precision(expect)) == actual
+
+
+class Test3Classical2Vector(object):
+    """
+    The resulting Classical state is transformed back to vector state in order to verify Classical orbital element
+    conversion back to Cartesian vectors.
+    """
+    def setup_method(self, method):
+        print("\n%s:%s" % (type(self).__name__, method.__name__))
+
+    def teardown_method(self, method):
+        print("{} passed".format(method.__name__))
+        pass
+
+    def test_classical2vector_r_vec(self):
+        actual = Test3VectorState.r_vec.si.value
+        expect = Test3Vector[0].si.value
+        assert pytest.approx(expect, abs=rounding_precision(expect[0])) == actual
+
+    def test_classical2vector_v_vec(self):
+        actual = Test3VectorState.v_vec.si.value
+        expect = Test3Vector[1].si.value
         assert pytest.approx(expect, abs=rounding_precision(expect[0])) == actual

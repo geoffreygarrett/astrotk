@@ -4,6 +4,7 @@ assignment_1_b2.py
 from astrotk.AE4878.bodies import Earth
 from astrotk.twobody.state import vector
 from astrotk.twobody.state import classical
+from astrotk.twobody.state import spherical
 from astrotk.tests.test_state_values import *
 
 """
@@ -33,6 +34,7 @@ classical_state_1 = vector_state_1.to_classical()
 # Print ClassicalState LaTeX table.
 print(classical_state_1.latex(20))
 
+
 """
 Question 2
 """
@@ -61,3 +63,16 @@ vector_state_2 = classical_state_2.to_vectors()
 # Print VectorState LaTeX table.
 print(vector_state_2.latex(10))
 
+# Test state for circular orbit
+classical_state_2 = classical.ClassicalState(
+    attractor=Earth(),
+    a=12269687.5912 * u.m,
+    e = 0.12300 * u.dimensionless_unscaled,
+    inc = 0 * u.deg,
+    raan = 0 * u.deg,
+    argp = 32.34 * u.deg,
+    M = 301.149932402 * u.deg,
+)
+
+print(classical_state_2.latex())
+print(classical_state_2.to_vectors().latex())

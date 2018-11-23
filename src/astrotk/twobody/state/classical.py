@@ -33,9 +33,17 @@ from astrotk.twobody.state import vector
 class ClassicalState(BaseState):
     def __init__(self, attractor, a, e, inc, raan, argp, theta=None, **kwargs):
         """
+        .. py:class:: ClassicalState()
         Two-body problem classical state representation, to be inherited by other state representations. Attractor must
         be defined as the geometry of the state is only transformable to another representation given the constant mu.
         :param attractor:
+        :param a:
+        :param e:
+        :param inc:
+        :param raan:
+        :param argp:
+        :param theta:
+
         """
         super().__init__(attractor)
         self._a = a
@@ -47,6 +55,7 @@ class ClassicalState(BaseState):
             self._theta = theta
         else:
             try:
+                print(kwargs["M"])
                 self._theta = OrbitalExpressions().theta(self._e.value, kwargs["M"].si.value) * u.rad
             except KeyError:
                 raise SystemError("If theta is not defined then M must be for instantiation of ClassicalState.")
@@ -55,6 +64,7 @@ class ClassicalState(BaseState):
     @property
     def a(self):
         """
+        .. py:method:: a
         :return: <astropy.units.Quantity> Semi-major axis (a)
         """
         return self._a
