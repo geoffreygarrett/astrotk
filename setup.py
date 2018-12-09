@@ -1,11 +1,42 @@
-from setuptools import setup
+# from setuptools import setup
 from setuptools import find_packages
+from distutils.core import setup
+from distutils.extension import Extension
+
+try:
+    from Cython.Distutils import build_ext
+except ImportError:
+    use_cython = False
+else:
+    use_cython = True
+
+cmdclass = {}
+ext_modules = []
+
+if use_cython:
+    ext_modules += [
+        Extension("astrotk.simulator.integrators.RK4", ["src/astrotk/simulator/integrators/RK4.pyx"]),
+        Extension("astrotk.simulator.integrators.Euler", ["src/astrotk/simulator/integrators/Euler.pyx"]),
+        Extension("astrotk.simulator.integrators.AB4", ["src/astrotk/simulator/integrators/AB4.pyx"]),
+        Extension("astrotk.simulator.eom.test", ["src/astrotk/simulator/eom/test.pyx"]),
+    ]
+
+    cmdclass.update({'build_ext': build_ext})
+
+else:
+    ext_modules += [
+        Extension("astrotk.simulator.integrators.RK4", ["src/astrotk/simulator/integrators/RK4.c"]),
+        Extension("astrotk.simulator.integrators.Euler", ["src/astrotk/simulator/integrators/Euler.c"]),
+        Extension("astrotk.simulator.integrators.AB4", ["src/astrotk/simulator/integrators/AB4.c"]),
+        Extension("astrotk.simulator.eom.test", ["src/astrotk/simulator/eom/test.c"]),
+    ]
 
 setup(
     name='astrotk',
     version='0.10.0',
-    packages=['astrotk', 'astrotk.nbody', 'astrotk.nbody.simulator', 'astrotk.tests', 'astrotk.AE4878',
-              'astrotk.twobody', 'astrotk.twobody.utils'] + find_packages(),
+    packages=['astrotk', 'astrotk.nbody', 'astrotk.nbody.simulator',
+              'astrotk.tests', 'astrotk.simulator', 'astrotk.AE4878',
+              'astrotk.twobody', 'astrotk.twobody.utils', 'astrotk.simulator.eom'] + find_packages(),
     package_dir={'': 'src'},
     url='',
     license='MIT',
@@ -18,6 +49,12 @@ setup(
         'pandas',
         'poliastro',
         'pytest',
-        'prettytable'
-    ]
+        'prettytable',
+        'Cython'
+    ],
+    # This is for the AE4878 constants. Will be deprecated.
+    include_package_data=True,
+    cmdclass=cmdclass,
+    ext_modules=ext_modules
+
 )

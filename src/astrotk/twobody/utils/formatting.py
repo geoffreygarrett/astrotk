@@ -6,7 +6,7 @@ from sympy import latex
 import pandas as pd
 import numpy as np
 # from astrotk.twobody.utils import
-from math import floor,log10
+from math import floor, log10
 
 dict_latex = {
     '_a': "$a$",

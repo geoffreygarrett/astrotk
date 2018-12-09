@@ -73,5 +73,10 @@ class Jupiter(_Body):
                        )
 
 
+Jupiter = Jupiter()
+Mars    = Mars()
+Sun     = Sun()
+Earth   = Earth()
+
 if __name__ == "__main__":
     pass
