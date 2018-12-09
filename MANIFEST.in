@@ -1,0 +1,2 @@
+include src/astrotk/AE4878/constants.json
+recursive-include cython *

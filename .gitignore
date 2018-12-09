@@ -15,3 +15,7 @@
 *.xml
 
 *__pycache__
+
+\src/astrotk/AE4878/*
+
+\src/astrotk/AE4878/.idea/*
