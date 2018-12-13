@@ -1,0 +1,6 @@
+.. include:: ../_templates/style.rst
+
+**************************************
+:cyan:`AE4872` Numerical Astrodynamics
+**************************************
+
