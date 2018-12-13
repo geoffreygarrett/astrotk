@@ -1,12 +1,11 @@
-from prettytable import PrettyTable
-import astropy.units as u
 from copy import deepcopy
-import sympy
-from sympy import latex
-import pandas as pd
-import numpy as np
 # from astrotk.twobody.utils import
 from math import floor, log10
+
+import astropy.units as u
+import numpy as np
+import pandas as pd
+from prettytable import PrettyTable
 
 dict_latex = {
     '_a': "$a$",
@@ -26,6 +25,9 @@ dict_latex = {
 dict_quantity = {
     'rad': "deg"
 }
+
+
+# TODO: Resolve DeprecationWarning: invalid escape sequence for above mapper.
 
 
 def _prettytable_map(dict):

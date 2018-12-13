@@ -1,6 +1,8 @@
 import astropy.units as u
 import numpy as np
 
+# TODO: Move these values to a config file in . and create import utility.
+
 Test1Classical = [
     6787746.891 * u.m,
     0.000731104 * u.dimensionless_unscaled,

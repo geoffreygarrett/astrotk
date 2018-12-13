@@ -1,7 +1,7 @@
-*********************
-astrotk.twobody.state
-*********************
 
+*********************
+State Transformations
+*********************
 
 The planets of the solar system are defined in this module.
 

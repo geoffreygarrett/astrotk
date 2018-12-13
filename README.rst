@@ -1,54 +1,76 @@
+.. include:: docs/_templates/style.rst
 
-*******
-Astrotk
-*******
+.. image:: _static/astrotk.png
+   :width: 150px
+   :align: center
 
-.. image:: https://img.shields.io/pypi/v/sphinx_rtd_theme.svg
-   :target: https://pypi.python.org/pypi/sphinx_rtd_theme
-   :alt: Pypi Version
-.. image:: https://travis-ci.org/rtfd/sphinx_rtd_theme.svg?branch=master
-   :target: https://travis-ci.org/rtfd/sphinx_rtd_theme
-   :alt: Build Status
-.. image:: https://img.shields.io/pypi/l/sphinx_rtd_theme.svg
-   :target: https://pypi.python.org/pypi/sphinx_rtd_theme/
-   :alt: License
-.. image:: https://readthedocs.org/projects/sphinx-rtd-theme/badge/?version=latest
-  :target: http://sphinx-rtd-theme.readthedocs.io/en/latest/?badge=latest
-  :alt: Documentation Status
+*********************************************
+Welcome to the :cyan:`astrotk` documentation!
+*********************************************
 
-The ``sphinx_rtd_theme`` is a sphinx_ theme designed to look modern and be mobile-friendly.
-This theme is primarily focused to be used on readthedocs.org_ but can work with your
-own sphinx projects. To read more and see a working demo_ head over to readthedocs.org_.
+.. image:: _static/mission-phases.png
+   :width: 650px
+   :align: center
 
-.. _sphinx: http://www.sphinx-doc.org
-.. _readthedocs.org: http://www.readthedocs.org
-.. _demo: https://sphinx-rtd-theme.readthedocs.io/en/latest/
 
+The :cyan:`astrotk` is an astrodynamics toolkit that is a project intended towards developing a Python interface with `TU Delft Astrodynamic Toolbox (TUDAT)`_.
+
+Current features are:
+
+* Conversion between Cartesian state vector, Classical orbital elements and Spherical coordinates.
+
+Planned features are:
+
+* Reference frame transformations according to the nomenclature and symbols in `AE3202 Flight Dynamics`_.
+* Customizable genetic algorithm module for initial interplanetary trajectory optimisation estimations using patched conics.
+* ITRF, GCRF & ICRF transformations.
+* The unknown content of the next `AE4878 Mission Geometry & Orbit Design assignment 2`_!
+
+.. _AE3202 Flight Dynamics: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=45367&_NotifyTextSearch_
+.. _TU Delft Astrodynamic Toolbox (TUDAT): http://tudat.tudelft.nl/
+.. _AE4878 Mission Geometry & Orbit Design assignment 2: https://www.merriam-webster.com/dictionary/awesome
+
+.. seealso::
+
+   Choice of object oriented design and implementation of astrodynamics in
+   Python is acknowledged to be adapted from `Poliastro`_, which I used extensively during the
+   Design Synthesis Exercise (DSE).
+
+.. _Poliastro: https://docs.poliastro.space/en/latest/
 
 Installing
 ==========
 
-The theme is distributed on PyPI_ and can be installed with pip::
+Clone the repository from GitHub::
 
-   pip install sphinx_rtd_theme
+   git clone https://github.com/ggarrett13/astrotk.git
 
-For more information read the full installing docs
-`here <https://sphinx-rtd-theme.readthedocs.io/en/latest/installing.html>`__.
+Navigate to the repository folder::
 
-.. _PyPI: https://pypi.python.org/pypi/sphinx_rtd_theme
+   cd /astrotk
 
+Install :cyan:`astrotk` and its dependencies::
 
-Configuration
-=============
-
-The ``sphinx_rtd_theme`` is highly customizable on both the page level and on a global level.
-To see all the possible configuration options read the configuring docs
-`here <https://sphinx-rtd-theme.readthedocs.io/en/latest/configuring.html>`__.
+   pip3 install .
 
 
-Contributing
-============
+Indices and tables
+==================
 
-If you would like to help improve the theme or have more control
-over the theme in case of a fork please read our contributing guide
-`here <https://sphinx-rtd-theme.readthedocs.io/en/latest/contributing.html>`__.
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+
+.. toctree::
+   :maxdepth: 3
+   :hidden:
+
+   self
+   preface/index
+   twobody/index
+   simulator/index
+   bodies/index
+   orbit_design/index
+   orbit_determination/index
+   tudastrotk/index

@@ -1,0 +1,3 @@
+[submodule "src/astrotk/tudatpy"]
+	path = src/astrotk/tudatpy
+	url = https://github.com/ggarrett13/tudatpy.git

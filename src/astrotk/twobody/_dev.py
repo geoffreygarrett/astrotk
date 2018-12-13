@@ -1,12 +1,11 @@
 if __name__ == "__main__":
     # Imports ---------------------------------------------------------------------------------------------------------#
-    from astrotk.AE4878.bodies import Earth
+    from astrotk.bodies.bodies import Earth
     from astrotk.twobody.state import vector
-    from astrotk.twobody.state import classical
     from astrotk.tests.test_state_values import *
 
     # Test 1 ----------------------------------------------------------------------------------------------------------#
-    from astrotk.tests.test_state_values import Test1Classical, Test1Vector, Test2Vector
+    from astrotk.tests.test_state_values import Test2Vector
     # Kev_test = classical.ClassicalState(Earth(),
     #                                     *Test2Classical[:-2])
     #

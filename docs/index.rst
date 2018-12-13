@@ -1,27 +1,19 @@
-.. astrotk documentation master file, created by
-   sphinx-quickstart on Thu Nov 22 00:53:20 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. include:: _templates/style.rst
 
-*************************************
-Welcome to the astrotk documentation!
-*************************************
-
-.. image:: https://travis-ci.org/rtfd/sphinx_rtd_theme.svg?branch=master
-   :target: https://travis-ci.org/rtfd/sphinx_rtd_theme
-   :alt: Build Status
-.. image:: https://img.shields.io/pypi/l/sphinx_rtd_theme.svg
-   :target: https://pypi.python.org/pypi/sphinx_rtd_theme/
-   :alt: License
-.. image:: https://readthedocs.org/projects/sphinx-rtd-theme/badge/?version=latest
-  :target: http://sphinx-rtd-theme.readthedocs.io/en/latest/?badge=latest
-  :alt: Documentation Status
-
-.. image:: _static/mission_phases.png
-   :width: 675px
+.. image:: _static/astrotk.png
+   :width: 150px
    :align: center
 
-The ``astrotk`` is a Astrodynamics toolkit that is a project intended towards developing a Python interface with `TU Delft Astrodynamic Toolbox`_.
+*********************************************
+Welcome to the :cyan:`astrotk` documentation!
+*********************************************
+
+.. image:: _static/mission-phases.png
+   :width: 650px
+   :align: center
+
+
+The :cyan:`astrotk` is an astrodynamics toolkit that is a project intended towards developing a Python interface with `TU Delft Astrodynamic Toolbox (TUDAT)`_.
 
 Current features are:
 
@@ -35,7 +27,7 @@ Planned features are:
 * The unknown content of the next `AE4878 Mission Geometry & Orbit Design assignment 2`_!
 
 .. _AE3202 Flight Dynamics: https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=45367&_NotifyTextSearch_
-.. _TU Delft Astrodynamic Toolbox: http://tudat.tudelft.nl/
+.. _TU Delft Astrodynamic Toolbox (TUDAT): http://tudat.tudelft.nl/
 .. _AE4878 Mission Geometry & Orbit Design assignment 2: https://www.merriam-webster.com/dictionary/awesome
 
 .. seealso::
@@ -57,35 +49,9 @@ Navigate to the repository folder::
 
    cd /astrotk
 
-Install ``astrotk`` and its dependencies::
+Install :cyan:`astrotk` and its dependencies::
 
    pip3 install .
-
-
-Changelog
-=========
-.. toctree::
-   :maxdepth: 2
-
-   changelog
-
-Modules
-=======
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Modules
-
-   twobody/state
-   twobody/utils
-
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-   :caption: Verification:
-
-   example/twobody/iss
-   example/twobody/cryosat2
 
 
 Indices and tables
@@ -94,3 +60,17 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+.. toctree::
+   :maxdepth: 3
+   :hidden:
+
+   self
+   preface/index
+   twobody/index
+   simulator/index
+   bodies/index
+   orbit_design/index
+   orbit_determination/index
+   tudastrotk/index

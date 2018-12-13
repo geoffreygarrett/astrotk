@@ -1,9 +1,18 @@
-import numpy as np
+mport
+numpy as np
 
 # "cimport" is used to import special compile-time information
 # about the numpy module (this is stored in a file numpy.pxd which is
 # currently part of the Cython distribution).
 cimport numpy as np
+
+# "cimport" is used to import special compile-time information
+# about the numpy module (this is stored in a file numpy.pxd which is
+# currently part of the Cython distribution).
+cimport
+
+numpy as np
+import numpy as np
 
 # We now need to fix a datatype for our arrays. I've used the variable
 # DTYPE for this, which is assigned to the usual NumPy runtime
@@ -43,7 +52,7 @@ def integrate(x0, f, t):
                         axis=0)
     return np.array(sol)
 
-def odeint(f, y0, t, args):
+def odeint(f, np.ndarray[np.float64_t] y0, t, args):
     sol = np.array([y0])
     if args:
         if type(args) is float:
