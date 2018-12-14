@@ -21,3 +21,5 @@
 \src/astrotk/AE4878/.idea/*
 
 \.pytest_cache
+
+\.build
