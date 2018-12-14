@@ -1,6 +1,7 @@
 # astrotk
 
-One Paragraph of project description goes here
+**astrotk** is a high level astrodynamics tool-kit for swift analysis in all aspects of orbital mechanics, with
+powerful kernels written in C++.
 
 ## Getting Started
 
@@ -9,73 +10,39 @@ purposes. See deployment for notes on how to deploy the project on a live system
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
+Currently there are no prerequisites outside of the Python packet manager PyPi. This will change if the user opts to 
+use the simulation kernel of Tudat when this is included.
+ 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Clone the repository from GitHub:
 
-Say what the step will be
-
-```
-Give the example
+```bash
+git clone https://github.com/ggarrett13/astrotk.git
 ```
 
-And repeat
-
+Navigate to the repository folder::
+```bash
+cd /astrotk
 ```
-until finished
+
+Install `astrotk` and its dependencies:
+```bash
+pip3 install .
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+```bash
+pytest  # while in top-level directory
 ```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Geoffrey Garrett** - *Initial work* - [ggarrett](https://github.com/ggarrett13)
 
 ## License
 
@@ -83,6 +50,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* DominicDirkx [DominicDirkx](https://github.com/DominicDirkx)
+
