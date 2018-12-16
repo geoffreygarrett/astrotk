@@ -1071,7 +1071,7 @@ typedef npy_double __pyx_t_5numpy_double_t;
  */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
-/* "astrotk/simulator/integrators/RK4.pyx":16
+/* "astrotk/simulator/integrators/RK4.pyx":12
  * # every type in the numpy module there's a corresponding compile-time
  * # type with a _t-suffix.
  * ctypedef np.float_t DTYPE_t             # <<<<<<<<<<<<<<
@@ -1143,10 +1143,10 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
-/* "astrotk/simulator/integrators/RK4.pyx":46
+/* "astrotk/simulator/integrators/RK4.pyx":42
  *     return np.array(sol)
  * 
- * def odeint(f, y0, t, args):             # <<<<<<<<<<<<<<
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):             # <<<<<<<<<<<<<<
  *     sol = np.array([y0])
  *     if args:
  */
@@ -1886,7 +1886,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
 static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x0, PyObject *__pyx_v_f, PyObject *__pyx_v_t); /* proto */
 static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint__f(PyObject *__pyx_self, PyObject *__pyx_v_y, PyObject *__pyx_v_t); /* proto */
 static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint_2_f(PyObject *__pyx_self, PyObject *__pyx_v_y, PyObject *__pyx_v_t); /* proto */
-static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_f, PyObject *__pyx_v_y0, PyObject *__pyx_v_t, PyObject *__pyx_v_args); /* proto */
+static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_f, PyArrayObject *__pyx_v_y0, PyObject *__pyx_v_t, PyObject *__pyx_v_args); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static PyObject *__pyx_tp_new_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -1914,7 +1914,7 @@ static PyObject *__pyx_codeobj__15;
 static PyObject *__pyx_codeobj__17;
 /* Late includes */
 
-/* "astrotk/simulator/integrators/RK4.pyx":22
+/* "astrotk/simulator/integrators/RK4.pyx":18
  * # cpdef np.ndarray (*f_type)(np.array, np.ndarray)
  * 
  * def step(np.ndarray[np.float64_t] x0, f, double h, t0=0.):             # <<<<<<<<<<<<<<
@@ -1961,13 +1961,13 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_1step(PyObject 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_f)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("step", 0, 3, 4, 1); __PYX_ERR(0, 22, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("step", 0, 3, 4, 1); __PYX_ERR(0, 18, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_h)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("step", 0, 3, 4, 2); __PYX_ERR(0, 22, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("step", 0, 3, 4, 2); __PYX_ERR(0, 18, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -1977,7 +1977,7 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_1step(PyObject 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(0, 22, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "step") < 0)) __PYX_ERR(0, 18, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -1992,18 +1992,18 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_1step(PyObject 
     }
     __pyx_v_x0 = ((PyArrayObject *)values[0]);
     __pyx_v_f = values[1];
-    __pyx_v_h = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_h == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 22, __pyx_L3_error)
+    __pyx_v_h = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_h == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 18, __pyx_L3_error)
     __pyx_v_t0 = values[3];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("step", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 22, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("step", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 18, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("astrotk.simulator.integrators.RK4.step", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x0), __pyx_ptype_5numpy_ndarray, 1, "x0", 0))) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x0), __pyx_ptype_5numpy_ndarray, 1, "x0", 0))) __PYX_ERR(0, 18, __pyx_L1_error)
   __pyx_r = __pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(__pyx_self, __pyx_v_x0, __pyx_v_f, __pyx_v_h, __pyx_v_t0);
 
   /* function exit code */
@@ -2074,11 +2074,11 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   __pyx_pybuffernd_x0.rcbuffer = &__pyx_pybuffer_x0;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_x0.rcbuffer->pybuffer, (PyObject*)__pyx_v_x0, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 22, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_x0.rcbuffer->pybuffer, (PyObject*)__pyx_v_x0, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 18, __pyx_L1_error)
   }
   __pyx_pybuffernd_x0.diminfo[0].strides = __pyx_pybuffernd_x0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_x0.diminfo[0].shape = __pyx_pybuffernd_x0.rcbuffer->pybuffer.shape[0];
 
-  /* "astrotk/simulator/integrators/RK4.pyx":23
+  /* "astrotk/simulator/integrators/RK4.pyx":19
  * 
  * def step(np.ndarray[np.float64_t] x0, f, double h, t0=0.):
  *     cdef np.ndarray[np.float64_t] k1 = f(x0, t0)             # <<<<<<<<<<<<<<
@@ -2101,7 +2101,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, ((PyObject *)__pyx_v_x0), __pyx_v_t0};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -2109,13 +2109,13 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, ((PyObject *)__pyx_v_x0), __pyx_v_t0};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -2126,18 +2126,18 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
     __Pyx_INCREF(__pyx_v_t0);
     __Pyx_GIVEREF(__pyx_v_t0);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_v_t0);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 19, __pyx_L1_error)
   __pyx_t_6 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_k1.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_k1 = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_k1.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 23, __pyx_L1_error)
+      __PYX_ERR(0, 19, __pyx_L1_error)
     } else {__pyx_pybuffernd_k1.diminfo[0].strides = __pyx_pybuffernd_k1.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_k1.diminfo[0].shape = __pyx_pybuffernd_k1.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2145,27 +2145,27 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   __pyx_v_k1 = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":24
+  /* "astrotk/simulator/integrators/RK4.pyx":20
  * def step(np.ndarray[np.float64_t] x0, f, double h, t0=0.):
  *     cdef np.ndarray[np.float64_t] k1 = f(x0, t0)
  *     cdef np.ndarray[np.float64_t] k2 = f(x0 + h * k1 / 2., t0 + h / 2.)             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[np.float64_t] k3 = f(x0 + h * k2 / 2., t0 + h / 2.)
  *     cdef np.ndarray[np.float64_t] k4 = f(x0 + h * k3, t0 + h)
  */
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, ((PyObject *)__pyx_v_k1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_2, ((PyObject *)__pyx_v_k1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyFloat_DivideObjC(__pyx_t_5, __pyx_float_2_, 2., 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_DivideObjC(__pyx_t_5, __pyx_float_2_, 2., 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyNumber_Add(((PyObject *)__pyx_v_x0), __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(((PyObject *)__pyx_v_x0), __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_h / 2.)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_h / 2.)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_v_t0, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_v_t0, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_INCREF(__pyx_v_f);
@@ -2184,7 +2184,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_5, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -2194,7 +2194,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_5, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -2202,7 +2202,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   } else
   #endif
   {
-    __pyx_t_8 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -2213,18 +2213,18 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
     PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_4, __pyx_t_3);
     __pyx_t_5 = 0;
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 20, __pyx_L1_error)
   __pyx_t_9 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_k2.rcbuffer->pybuffer, (PyObject*)__pyx_t_9, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_k2 = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_k2.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 24, __pyx_L1_error)
+      __PYX_ERR(0, 20, __pyx_L1_error)
     } else {__pyx_pybuffernd_k2.diminfo[0].strides = __pyx_pybuffernd_k2.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_k2.diminfo[0].shape = __pyx_pybuffernd_k2.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2232,27 +2232,27 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   __pyx_v_k2 = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":25
+  /* "astrotk/simulator/integrators/RK4.pyx":21
  *     cdef np.ndarray[np.float64_t] k1 = f(x0, t0)
  *     cdef np.ndarray[np.float64_t] k2 = f(x0 + h * k1 / 2., t0 + h / 2.)
  *     cdef np.ndarray[np.float64_t] k3 = f(x0 + h * k2 / 2., t0 + h / 2.)             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[np.float64_t] k4 = f(x0 + h * k3, t0 + h)
  *     cdef np.ndarray[np.float64_t] st = 1. / 6. * (k1 + 2 * k2 + 2 * k3 + k4)
  */
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_8 = PyNumber_Multiply(__pyx_t_2, ((PyObject *)__pyx_v_k2)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_8 = PyNumber_Multiply(__pyx_t_2, ((PyObject *)__pyx_v_k2)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyFloat_DivideObjC(__pyx_t_8, __pyx_float_2_, 2., 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_DivideObjC(__pyx_t_8, __pyx_float_2_, 2., 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyNumber_Add(((PyObject *)__pyx_v_x0), __pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_8 = PyNumber_Add(((PyObject *)__pyx_v_x0), __pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_h / 2.)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble((__pyx_v_h / 2.)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_v_t0, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_v_t0, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_INCREF(__pyx_v_f);
@@ -2271,7 +2271,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_8, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -2281,7 +2281,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_8, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -2289,7 +2289,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -2300,18 +2300,18 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
     PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_4, __pyx_t_3);
     __pyx_t_8 = 0;
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 21, __pyx_L1_error)
   __pyx_t_10 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_k3.rcbuffer->pybuffer, (PyObject*)__pyx_t_10, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_k3 = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_k3.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 25, __pyx_L1_error)
+      __PYX_ERR(0, 21, __pyx_L1_error)
     } else {__pyx_pybuffernd_k3.diminfo[0].strides = __pyx_pybuffernd_k3.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_k3.diminfo[0].shape = __pyx_pybuffernd_k3.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2319,24 +2319,24 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   __pyx_v_k3 = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":26
+  /* "astrotk/simulator/integrators/RK4.pyx":22
  *     cdef np.ndarray[np.float64_t] k2 = f(x0 + h * k1 / 2., t0 + h / 2.)
  *     cdef np.ndarray[np.float64_t] k3 = f(x0 + h * k2 / 2., t0 + h / 2.)
  *     cdef np.ndarray[np.float64_t] k4 = f(x0 + h * k3, t0 + h)             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[np.float64_t] st = 1. / 6. * (k1 + 2 * k2 + 2 * k3 + k4)
  *     return x0 + h * st
  */
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = PyNumber_Multiply(__pyx_t_2, ((PyObject *)__pyx_v_k3)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_7 = PyNumber_Multiply(__pyx_t_2, ((PyObject *)__pyx_v_k3)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(((PyObject *)__pyx_v_x0), __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(((PyObject *)__pyx_v_x0), __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = PyNumber_Add(__pyx_v_t0, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_v_t0, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_INCREF(__pyx_v_f);
@@ -2355,7 +2355,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_2, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2365,7 +2365,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_2, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2373,7 +2373,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 22, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -2384,18 +2384,18 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_t_3);
     __pyx_t_2 = 0;
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 22, __pyx_L1_error)
   __pyx_t_11 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_k4.rcbuffer->pybuffer, (PyObject*)__pyx_t_11, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_k4 = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_k4.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 26, __pyx_L1_error)
+      __PYX_ERR(0, 22, __pyx_L1_error)
     } else {__pyx_pybuffernd_k4.diminfo[0].strides = __pyx_pybuffernd_k4.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_k4.diminfo[0].shape = __pyx_pybuffernd_k4.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2403,40 +2403,40 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   __pyx_v_k4 = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":27
+  /* "astrotk/simulator/integrators/RK4.pyx":23
  *     cdef np.ndarray[np.float64_t] k3 = f(x0 + h * k2 / 2., t0 + h / 2.)
  *     cdef np.ndarray[np.float64_t] k4 = f(x0 + h * k3, t0 + h)
  *     cdef np.ndarray[np.float64_t] st = 1. / 6. * (k1 + 2 * k2 + 2 * k3 + k4)             # <<<<<<<<<<<<<<
  *     return x0 + h * st
  * 
  */
-  __pyx_t_1 = PyFloat_FromDouble((1. / 6.)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((1. / 6.)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = PyNumber_Multiply(__pyx_int_2, ((PyObject *)__pyx_v_k2)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_7 = PyNumber_Multiply(__pyx_int_2, ((PyObject *)__pyx_v_k2)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = PyNumber_Add(((PyObject *)__pyx_v_k1), __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(((PyObject *)__pyx_v_k1), __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyNumber_Multiply(__pyx_int_2, ((PyObject *)__pyx_v_k3)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_7 = PyNumber_Multiply(__pyx_int_2, ((PyObject *)__pyx_v_k3)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_5, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = PyNumber_Add(__pyx_t_3, ((PyObject *)__pyx_v_k4)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_7 = PyNumber_Add(__pyx_t_3, ((PyObject *)__pyx_v_k4)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 23, __pyx_L1_error)
   __pyx_t_12 = ((PyArrayObject *)__pyx_t_3);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_st.rcbuffer->pybuffer, (PyObject*)__pyx_t_12, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_st = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_st.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 27, __pyx_L1_error)
+      __PYX_ERR(0, 23, __pyx_L1_error)
     } else {__pyx_pybuffernd_st.diminfo[0].strides = __pyx_pybuffernd_st.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_st.diminfo[0].shape = __pyx_pybuffernd_st.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -2444,7 +2444,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   __pyx_v_st = ((PyArrayObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":28
+  /* "astrotk/simulator/integrators/RK4.pyx":24
  *     cdef np.ndarray[np.float64_t] k4 = f(x0 + h * k3, t0 + h)
  *     cdef np.ndarray[np.float64_t] st = 1. / 6. * (k1 + 2 * k2 + 2 * k3 + k4)
  *     return x0 + h * st             # <<<<<<<<<<<<<<
@@ -2452,19 +2452,19 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
  * # "def" can type its arguments but not have a return type. The type of the
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = PyNumber_Multiply(__pyx_t_3, ((PyObject *)__pyx_v_st)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_7 = PyNumber_Multiply(__pyx_t_3, ((PyObject *)__pyx_v_st)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(((PyObject *)__pyx_v_x0), __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(((PyObject *)__pyx_v_x0), __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":22
+  /* "astrotk/simulator/integrators/RK4.pyx":18
  * # cpdef np.ndarray (*f_type)(np.array, np.ndarray)
  * 
  * def step(np.ndarray[np.float64_t] x0, f, double h, t0=0.):             # <<<<<<<<<<<<<<
@@ -2512,7 +2512,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_step(CYTHON_UNU
   return __pyx_r;
 }
 
-/* "astrotk/simulator/integrators/RK4.pyx":38
+/* "astrotk/simulator/integrators/RK4.pyx":34
  * # NumPy arrays, and b) make some attribute access like f.shape[0] much
  * # more efficient. (In this example this doesn't matter though.)
  * def integrate(x0, f, t):             # <<<<<<<<<<<<<<
@@ -2555,17 +2555,17 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_3integrate(PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_f)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("integrate", 1, 3, 3, 1); __PYX_ERR(0, 38, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("integrate", 1, 3, 3, 1); __PYX_ERR(0, 34, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_t)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("integrate", 1, 3, 3, 2); __PYX_ERR(0, 38, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("integrate", 1, 3, 3, 2); __PYX_ERR(0, 34, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "integrate") < 0)) __PYX_ERR(0, 38, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "integrate") < 0)) __PYX_ERR(0, 34, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2580,7 +2580,7 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_3integrate(PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("integrate", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 38, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("integrate", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 34, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("astrotk.simulator.integrators.RK4.integrate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2610,19 +2610,19 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("integrate", 0);
 
-  /* "astrotk/simulator/integrators/RK4.pyx":39
+  /* "astrotk/simulator/integrators/RK4.pyx":35
  * # more efficient. (In this example this doesn't matter though.)
  * def integrate(x0, f, t):
  *     sol = np.array([x0])             # <<<<<<<<<<<<<<
  *     for idx in range(len(t) - 1):
  *         _t0 = t[idx]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_x0);
   __Pyx_GIVEREF(__pyx_v_x0);
@@ -2640,32 +2640,32 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_sol = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":40
+  /* "astrotk/simulator/integrators/RK4.pyx":36
  * def integrate(x0, f, t):
  *     sol = np.array([x0])
  *     for idx in range(len(t) - 1):             # <<<<<<<<<<<<<<
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx], f, h=t[idx + 1] - _t0, t0=_t0)],
  */
-  __pyx_t_5 = PyObject_Length(__pyx_v_t); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 40, __pyx_L1_error)
-  __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_5 - 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_5 = PyObject_Length(__pyx_v_t); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_5 - 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_1 = __pyx_t_3; __Pyx_INCREF(__pyx_t_1); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 36, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -2673,17 +2673,17 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 36, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 36, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -2693,7 +2693,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 40, __pyx_L1_error)
+          else __PYX_ERR(0, 36, __pyx_L1_error)
         }
         break;
       }
@@ -2702,35 +2702,35 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
     __Pyx_XDECREF_SET(__pyx_v_idx, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":41
+    /* "astrotk/simulator/integrators/RK4.pyx":37
  *     sol = np.array([x0])
  *     for idx in range(len(t) - 1):
  *         _t0 = t[idx]             # <<<<<<<<<<<<<<
  *         sol = np.append(sol, [step(sol[idx], f, h=t[idx + 1] - _t0, t0=_t0)],
  *                         axis=0)
  */
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_t, __pyx_v_idx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_t, __pyx_v_idx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v__t0, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":42
+    /* "astrotk/simulator/integrators/RK4.pyx":38
  *     for idx in range(len(t) - 1):
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx], f, h=t[idx + 1] - _t0, t0=_t0)],             # <<<<<<<<<<<<<<
  *                         axis=0)
  *     return np.array(sol)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_append); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_append); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_step); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_step); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_sol, __pyx_v_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_sol, __pyx_v_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4);
@@ -2738,30 +2738,30 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
     __Pyx_GIVEREF(__pyx_v_f);
     PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_f);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_idx, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_idx, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_t, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_t, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = PyNumber_Subtract(__pyx_t_9, __pyx_v__t0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_Subtract(__pyx_t_9, __pyx_v__t0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_h, __pyx_t_8) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_h, __pyx_t_8) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_t0, __pyx_v__t0) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 42, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_t0, __pyx_v__t0) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, __pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_8);
     PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_8);
     __pyx_t_8 = 0;
-    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_INCREF(__pyx_v_sol);
     __Pyx_GIVEREF(__pyx_v_sol);
@@ -2770,25 +2770,25 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
     PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":43
+    /* "astrotk/simulator/integrators/RK4.pyx":39
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx], f, h=t[idx + 1] - _t0, t0=_t0)],
  *                         axis=0)             # <<<<<<<<<<<<<<
  *     return np.array(sol)
  * 
  */
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
 
-    /* "astrotk/simulator/integrators/RK4.pyx":42
+    /* "astrotk/simulator/integrators/RK4.pyx":38
  *     for idx in range(len(t) - 1):
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx], f, h=t[idx + 1] - _t0, t0=_t0)],             # <<<<<<<<<<<<<<
  *                         axis=0)
  *     return np.array(sol)
  */
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -2796,7 +2796,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
     __Pyx_DECREF_SET(__pyx_v_sol, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":40
+    /* "astrotk/simulator/integrators/RK4.pyx":36
  * def integrate(x0, f, t):
  *     sol = np.array([x0])
  *     for idx in range(len(t) - 1):             # <<<<<<<<<<<<<<
@@ -2806,17 +2806,17 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":44
+  /* "astrotk/simulator/integrators/RK4.pyx":40
  *         sol = np.append(sol, [step(sol[idx], f, h=t[idx + 1] - _t0, t0=_t0)],
  *                         axis=0)
  *     return np.array(sol)             # <<<<<<<<<<<<<<
  * 
- * def odeint(f, y0, t, args):
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -2831,14 +2831,14 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
   }
   __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_7, __pyx_v_sol) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_sol);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":38
+  /* "astrotk/simulator/integrators/RK4.pyx":34
  * # NumPy arrays, and b) make some attribute access like f.shape[0] much
  * # more efficient. (In this example this doesn't matter though.)
  * def integrate(x0, f, t):             # <<<<<<<<<<<<<<
@@ -2866,10 +2866,10 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_2integrate(CYTH
   return __pyx_r;
 }
 
-/* "astrotk/simulator/integrators/RK4.pyx":46
+/* "astrotk/simulator/integrators/RK4.pyx":42
  *     return np.array(sol)
  * 
- * def odeint(f, y0, t, args):             # <<<<<<<<<<<<<<
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):             # <<<<<<<<<<<<<<
  *     sol = np.array([y0])
  *     if args:
  */
@@ -2879,7 +2879,7 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_5odeint(PyObjec
 static PyMethodDef __pyx_mdef_7astrotk_9simulator_11integrators_3RK4_5odeint = {"odeint", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7astrotk_9simulator_11integrators_3RK4_5odeint, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_5odeint(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_f = 0;
-  PyObject *__pyx_v_y0 = 0;
+  PyArrayObject *__pyx_v_y0 = 0;
   PyObject *__pyx_v_t = 0;
   PyObject *__pyx_v_args = 0;
   PyObject *__pyx_r = 0;
@@ -2912,23 +2912,23 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_5odeint(PyObjec
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y0)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("odeint", 1, 4, 4, 1); __PYX_ERR(0, 46, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("odeint", 1, 4, 4, 1); __PYX_ERR(0, 42, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_t)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("odeint", 1, 4, 4, 2); __PYX_ERR(0, 46, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("odeint", 1, 4, 4, 2); __PYX_ERR(0, 42, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_args)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("odeint", 1, 4, 4, 3); __PYX_ERR(0, 46, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("odeint", 1, 4, 4, 3); __PYX_ERR(0, 42, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "odeint") < 0)) __PYX_ERR(0, 46, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "odeint") < 0)) __PYX_ERR(0, 42, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -2939,26 +2939,31 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_5odeint(PyObjec
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
     }
     __pyx_v_f = values[0];
-    __pyx_v_y0 = values[1];
+    __pyx_v_y0 = ((PyArrayObject *)values[1]);
     __pyx_v_t = values[2];
     __pyx_v_args = values[3];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("odeint", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 46, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("odeint", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 42, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("astrotk.simulator.integrators.RK4.odeint", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y0), __pyx_ptype_5numpy_ndarray, 1, "y0", 0))) __PYX_ERR(0, 42, __pyx_L1_error)
   __pyx_r = __pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(__pyx_self, __pyx_v_f, __pyx_v_y0, __pyx_v_t, __pyx_v_args);
 
   /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "astrotk/simulator/integrators/RK4.pyx":50
+/* "astrotk/simulator/integrators/RK4.pyx":46
  *     if args:
  *         if type(args) is float:
  *             def _f(y, t):             # <<<<<<<<<<<<<<
@@ -2998,11 +3003,11 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_6odeint_1_f(PyO
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_t)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_f", 1, 2, 2, 1); __PYX_ERR(0, 50, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_f", 1, 2, 2, 1); __PYX_ERR(0, 46, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_f") < 0)) __PYX_ERR(0, 50, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_f") < 0)) __PYX_ERR(0, 46, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3015,7 +3020,7 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_6odeint_1_f(PyO
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_f", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_f", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 46, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("astrotk.simulator.integrators.RK4.odeint._f", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3042,7 +3047,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint__f(PyOb
   __pyx_outer_scope = (struct __pyx_obj_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":51
+  /* "astrotk/simulator/integrators/RK4.pyx":47
  *         if type(args) is float:
  *             def _f(y, t):
  *                 return f(y, t, args)             # <<<<<<<<<<<<<<
@@ -3050,8 +3055,8 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint__f(PyOb
  *             def _f(y, t):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_f)) { __Pyx_RaiseClosureNameError("f"); __PYX_ERR(0, 51, __pyx_L1_error) }
-  if (unlikely(!__pyx_cur_scope->__pyx_v_args)) { __Pyx_RaiseClosureNameError("args"); __PYX_ERR(0, 51, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_f)) { __Pyx_RaiseClosureNameError("f"); __PYX_ERR(0, 47, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_args)) { __Pyx_RaiseClosureNameError("args"); __PYX_ERR(0, 47, __pyx_L1_error) }
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_f);
   __pyx_t_2 = __pyx_cur_scope->__pyx_v_f; __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -3068,7 +3073,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint__f(PyOb
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_y, __pyx_v_t, __pyx_cur_scope->__pyx_v_args};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -3076,13 +3081,13 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint__f(PyOb
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_y, __pyx_v_t, __pyx_cur_scope->__pyx_v_args};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -3096,7 +3101,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint__f(PyOb
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_args);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_args);
     PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_4, __pyx_cur_scope->__pyx_v_args);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -3105,7 +3110,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint__f(PyOb
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":50
+  /* "astrotk/simulator/integrators/RK4.pyx":46
  *     if args:
  *         if type(args) is float:
  *             def _f(y, t):             # <<<<<<<<<<<<<<
@@ -3127,7 +3132,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint__f(PyOb
   return __pyx_r;
 }
 
-/* "astrotk/simulator/integrators/RK4.pyx":53
+/* "astrotk/simulator/integrators/RK4.pyx":49
  *                 return f(y, t, args)
  *         else:
  *             def _f(y, t):             # <<<<<<<<<<<<<<
@@ -3167,11 +3172,11 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_6odeint_3_f(PyO
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_t)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_f", 1, 2, 2, 1); __PYX_ERR(0, 53, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_f", 1, 2, 2, 1); __PYX_ERR(0, 49, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_f") < 0)) __PYX_ERR(0, 53, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_f") < 0)) __PYX_ERR(0, 49, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3184,7 +3189,7 @@ static PyObject *__pyx_pw_7astrotk_9simulator_11integrators_3RK4_6odeint_3_f(PyO
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_f", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 53, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_f", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 49, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("astrotk.simulator.integrators.RK4.odeint._f", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3209,7 +3214,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint_2_f(PyO
   __pyx_outer_scope = (struct __pyx_obj_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":54
+  /* "astrotk/simulator/integrators/RK4.pyx":50
  *         else:
  *             def _f(y, t):
  *                 return f(y, t, *args)             # <<<<<<<<<<<<<<
@@ -3217,8 +3222,8 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint_2_f(PyO
  *     for idx in range(len(t) - 1):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_f)) { __Pyx_RaiseClosureNameError("f"); __PYX_ERR(0, 54, __pyx_L1_error) }
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_f)) { __Pyx_RaiseClosureNameError("f"); __PYX_ERR(0, 50, __pyx_L1_error) }
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_y);
   __Pyx_GIVEREF(__pyx_v_y);
@@ -3226,21 +3231,21 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint_2_f(PyO
   __Pyx_INCREF(__pyx_v_t);
   __Pyx_GIVEREF(__pyx_v_t);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_t);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_args)) { __Pyx_RaiseClosureNameError("args"); __PYX_ERR(0, 54, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_PySequence_Tuple(__pyx_cur_scope->__pyx_v_args); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_args)) { __Pyx_RaiseClosureNameError("args"); __PYX_ERR(0, 50, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_PySequence_Tuple(__pyx_cur_scope->__pyx_v_args); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_v_f, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_v_f, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":53
+  /* "astrotk/simulator/integrators/RK4.pyx":49
  *                 return f(y, t, args)
  *         else:
  *             def _f(y, t):             # <<<<<<<<<<<<<<
@@ -3261,20 +3266,22 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_6odeint_2_f(PyO
   return __pyx_r;
 }
 
-/* "astrotk/simulator/integrators/RK4.pyx":46
+/* "astrotk/simulator/integrators/RK4.pyx":42
  *     return np.array(sol)
  * 
- * def odeint(f, y0, t, args):             # <<<<<<<<<<<<<<
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):             # <<<<<<<<<<<<<<
  *     sol = np.array([y0])
  *     if args:
  */
 
-static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_f, PyObject *__pyx_v_y0, PyObject *__pyx_v_t, PyObject *__pyx_v_args) {
+static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_f, PyArrayObject *__pyx_v_y0, PyObject *__pyx_v_t, PyObject *__pyx_v_args) {
   struct __pyx_obj_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint *__pyx_cur_scope;
   PyObject *__pyx_v_sol = NULL;
   PyObject *__pyx_v__f = 0;
   PyObject *__pyx_v_idx = NULL;
   PyObject *__pyx_v__t0 = NULL;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_y0;
+  __Pyx_Buffer __pyx_pybuffer_y0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3293,7 +3300,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 46, __pyx_L1_error)
+    __PYX_ERR(0, 42, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -3303,24 +3310,33 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
   __pyx_cur_scope->__pyx_v_args = __pyx_v_args;
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_args);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_args);
+  __pyx_pybuffer_y0.pybuffer.buf = NULL;
+  __pyx_pybuffer_y0.refcount = 0;
+  __pyx_pybuffernd_y0.data = NULL;
+  __pyx_pybuffernd_y0.rcbuffer = &__pyx_pybuffer_y0;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_y0.rcbuffer->pybuffer, (PyObject*)__pyx_v_y0, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 42, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_y0.diminfo[0].strides = __pyx_pybuffernd_y0.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_y0.diminfo[0].shape = __pyx_pybuffernd_y0.rcbuffer->pybuffer.shape[0];
 
-  /* "astrotk/simulator/integrators/RK4.pyx":47
+  /* "astrotk/simulator/integrators/RK4.pyx":43
  * 
- * def odeint(f, y0, t, args):
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):
  *     sol = np.array([y0])             # <<<<<<<<<<<<<<
  *     if args:
  *         if type(args) is float:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_v_y0);
-  __Pyx_GIVEREF(__pyx_v_y0);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_v_y0);
+  __Pyx_INCREF(((PyObject *)__pyx_v_y0));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_y0));
+  PyList_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_y0));
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
     __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
@@ -3334,23 +3350,23 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_sol = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":48
- * def odeint(f, y0, t, args):
+  /* "astrotk/simulator/integrators/RK4.pyx":44
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):
  *     sol = np.array([y0])
  *     if args:             # <<<<<<<<<<<<<<
  *         if type(args) is float:
  *             def _f(y, t):
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_args); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_args); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 44, __pyx_L1_error)
   if (__pyx_t_5) {
 
-    /* "astrotk/simulator/integrators/RK4.pyx":49
+    /* "astrotk/simulator/integrators/RK4.pyx":45
  *     sol = np.array([y0])
  *     if args:
  *         if type(args) is float:             # <<<<<<<<<<<<<<
@@ -3361,19 +3377,19 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
     __pyx_t_6 = (__pyx_t_5 != 0);
     if (__pyx_t_6) {
 
-      /* "astrotk/simulator/integrators/RK4.pyx":50
+      /* "astrotk/simulator/integrators/RK4.pyx":46
  *     if args:
  *         if type(args) is float:
  *             def _f(y, t):             # <<<<<<<<<<<<<<
  *                 return f(y, t, args)
  *         else:
  */
-      __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_6odeint_1_f, 0, __pyx_n_s_odeint_locals__f, ((PyObject*)__pyx_cur_scope), __pyx_n_s_astrotk_simulator_integrators_RK, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_6odeint_1_f, 0, __pyx_n_s_odeint_locals__f, ((PyObject*)__pyx_cur_scope), __pyx_n_s_astrotk_simulator_integrators_RK, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_v__f = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "astrotk/simulator/integrators/RK4.pyx":49
+      /* "astrotk/simulator/integrators/RK4.pyx":45
  *     sol = np.array([y0])
  *     if args:
  *         if type(args) is float:             # <<<<<<<<<<<<<<
@@ -3383,7 +3399,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
       goto __pyx_L4;
     }
 
-    /* "astrotk/simulator/integrators/RK4.pyx":53
+    /* "astrotk/simulator/integrators/RK4.pyx":49
  *                 return f(y, t, args)
  *         else:
  *             def _f(y, t):             # <<<<<<<<<<<<<<
@@ -3391,15 +3407,15 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
  * 
  */
     /*else*/ {
-      __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_6odeint_3_f, 0, __pyx_n_s_odeint_locals__f, ((PyObject*)__pyx_cur_scope), __pyx_n_s_astrotk_simulator_integrators_RK, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_6odeint_3_f, 0, __pyx_n_s_odeint_locals__f, ((PyObject*)__pyx_cur_scope), __pyx_n_s_astrotk_simulator_integrators_RK, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_v__f = __pyx_t_1;
       __pyx_t_1 = 0;
     }
     __pyx_L4:;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":48
- * def odeint(f, y0, t, args):
+    /* "astrotk/simulator/integrators/RK4.pyx":44
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):
  *     sol = np.array([y0])
  *     if args:             # <<<<<<<<<<<<<<
  *         if type(args) is float:
@@ -3407,26 +3423,26 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
  */
   }
 
-  /* "astrotk/simulator/integrators/RK4.pyx":56
+  /* "astrotk/simulator/integrators/RK4.pyx":52
  *                 return f(y, t, *args)
  * 
  *     for idx in range(len(t) - 1):             # <<<<<<<<<<<<<<
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx],
  */
-  __pyx_t_7 = PyObject_Length(__pyx_v_t); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 56, __pyx_L1_error)
-  __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_7 - 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(__pyx_v_t); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t((__pyx_t_7 - 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_1 = __pyx_t_3; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 52, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -3434,17 +3450,17 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 52, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 52, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -3454,7 +3470,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 56, __pyx_L1_error)
+          else __PYX_ERR(0, 52, __pyx_L1_error)
         }
         break;
       }
@@ -3463,52 +3479,52 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
     __Pyx_XDECREF_SET(__pyx_v_idx, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":57
+    /* "astrotk/simulator/integrators/RK4.pyx":53
  * 
  *     for idx in range(len(t) - 1):
  *         _t0 = t[idx]             # <<<<<<<<<<<<<<
  *         sol = np.append(sol, [step(sol[idx],
  *                                    _f,
  */
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_t, __pyx_v_idx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_t, __pyx_v_idx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v__t0, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":58
+    /* "astrotk/simulator/integrators/RK4.pyx":54
  *     for idx in range(len(t) - 1):
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx],             # <<<<<<<<<<<<<<
  *                                    _f,
  *                                    h=t[idx + 1] - _t0,
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_append); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_append); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_step); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_step); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_sol, __pyx_v_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_sol, __pyx_v_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
 
-    /* "astrotk/simulator/integrators/RK4.pyx":59
+    /* "astrotk/simulator/integrators/RK4.pyx":55
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx],
  *                                    _f,             # <<<<<<<<<<<<<<
  *                                    h=t[idx + 1] - _t0,
  *                                    t0=_t0)], axis=0)
  */
-    if (unlikely(!__pyx_v__f)) { __Pyx_RaiseUnboundLocalError("_f"); __PYX_ERR(0, 59, __pyx_L1_error) }
+    if (unlikely(!__pyx_v__f)) { __Pyx_RaiseUnboundLocalError("_f"); __PYX_ERR(0, 55, __pyx_L1_error) }
 
-    /* "astrotk/simulator/integrators/RK4.pyx":58
+    /* "astrotk/simulator/integrators/RK4.pyx":54
  *     for idx in range(len(t) - 1):
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx],             # <<<<<<<<<<<<<<
  *                                    _f,
  *                                    h=t[idx + 1] - _t0,
  */
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_4);
@@ -3517,52 +3533,52 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
     PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v__f);
     __pyx_t_4 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":60
+    /* "astrotk/simulator/integrators/RK4.pyx":56
  *         sol = np.append(sol, [step(sol[idx],
  *                                    _f,
  *                                    h=t[idx + 1] - _t0,             # <<<<<<<<<<<<<<
  *                                    t0=_t0)], axis=0)
  *     return np.array(sol)
  */
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_v_idx, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_v_idx, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_t, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_t, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = PyNumber_Subtract(__pyx_t_11, __pyx_v__t0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_10 = PyNumber_Subtract(__pyx_t_11, __pyx_v__t0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_h, __pyx_t_10) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_h, __pyx_t_10) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":61
+    /* "astrotk/simulator/integrators/RK4.pyx":57
  *                                    _f,
  *                                    h=t[idx + 1] - _t0,
  *                                    t0=_t0)], axis=0)             # <<<<<<<<<<<<<<
  *     return np.array(sol)
  */
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_t0, __pyx_v__t0) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_t0, __pyx_v__t0) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
 
-    /* "astrotk/simulator/integrators/RK4.pyx":58
+    /* "astrotk/simulator/integrators/RK4.pyx":54
  *     for idx in range(len(t) - 1):
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx],             # <<<<<<<<<<<<<<
  *                                    _f,
  *                                    h=t[idx + 1] - _t0,
  */
-    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_10);
     PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_10);
     __pyx_t_10 = 0;
-    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_INCREF(__pyx_v_sol);
     __Pyx_GIVEREF(__pyx_v_sol);
@@ -3571,24 +3587,24 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
     PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":61
+    /* "astrotk/simulator/integrators/RK4.pyx":57
  *                                    _f,
  *                                    h=t[idx + 1] - _t0,
  *                                    t0=_t0)], axis=0)             # <<<<<<<<<<<<<<
  *     return np.array(sol)
  */
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
 
-    /* "astrotk/simulator/integrators/RK4.pyx":58
+    /* "astrotk/simulator/integrators/RK4.pyx":54
  *     for idx in range(len(t) - 1):
  *         _t0 = t[idx]
  *         sol = np.append(sol, [step(sol[idx],             # <<<<<<<<<<<<<<
  *                                    _f,
  *                                    h=t[idx + 1] - _t0,
  */
-    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, __pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, __pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -3596,7 +3612,7 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
     __Pyx_DECREF_SET(__pyx_v_sol, __pyx_t_9);
     __pyx_t_9 = 0;
 
-    /* "astrotk/simulator/integrators/RK4.pyx":56
+    /* "astrotk/simulator/integrators/RK4.pyx":52
  *                 return f(y, t, *args)
  * 
  *     for idx in range(len(t) - 1):             # <<<<<<<<<<<<<<
@@ -3606,15 +3622,15 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":62
+  /* "astrotk/simulator/integrators/RK4.pyx":58
  *                                    h=t[idx + 1] - _t0,
  *                                    t0=_t0)], axis=0)
  *     return np.array(sol)             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_9 = NULL;
@@ -3629,17 +3645,17 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
   }
   __pyx_t_1 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_9, __pyx_v_sol) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_sol);
   __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":46
+  /* "astrotk/simulator/integrators/RK4.pyx":42
  *     return np.array(sol)
  * 
- * def odeint(f, y0, t, args):             # <<<<<<<<<<<<<<
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):             # <<<<<<<<<<<<<<
  *     sol = np.array([y0])
  *     if args:
  */
@@ -3653,9 +3669,18 @@ static PyObject *__pyx_pf_7astrotk_9simulator_11integrators_3RK4_4odeint(CYTHON_
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_y0.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
   __Pyx_AddTraceback("astrotk.simulator.integrators.RK4.odeint", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
+  goto __pyx_L2;
   __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_y0.rcbuffer->pybuffer);
+  __pyx_L2:;
   __Pyx_XDECREF(__pyx_v_sol);
   __Pyx_XDECREF(__pyx_v__f);
   __Pyx_XDECREF(__pyx_v_idx);
@@ -6291,7 +6316,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 36, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 272, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 856, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1038, __pyx_L1_error)
@@ -6304,29 +6329,29 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "astrotk/simulator/integrators/RK4.pyx":50
+  /* "astrotk/simulator/integrators/RK4.pyx":46
  *     if args:
  *         if type(args) is float:
  *             def _f(y, t):             # <<<<<<<<<<<<<<
  *                 return f(y, t, args)
  *         else:
  */
-  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_y, __pyx_n_s_t); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_y, __pyx_n_s_t); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_f_2, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_f_2, 46, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 46, __pyx_L1_error)
 
-  /* "astrotk/simulator/integrators/RK4.pyx":53
+  /* "astrotk/simulator/integrators/RK4.pyx":49
  *                 return f(y, t, args)
  *         else:
  *             def _f(y, t):             # <<<<<<<<<<<<<<
  *                 return f(y, t, *args)
  * 
  */
-  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_n_s_y, __pyx_n_s_t); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_n_s_y, __pyx_n_s_t); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_f_2, 53, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_f_2, 49, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 49, __pyx_L1_error)
 
   /* "../../env/mgod/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":272
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
@@ -6425,41 +6450,41 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "astrotk/simulator/integrators/RK4.pyx":22
+  /* "astrotk/simulator/integrators/RK4.pyx":18
  * # cpdef np.ndarray (*f_type)(np.array, np.ndarray)
  * 
  * def step(np.ndarray[np.float64_t] x0, f, double h, t0=0.):             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[np.float64_t] k1 = f(x0, t0)
  *     cdef np.ndarray[np.float64_t] k2 = f(x0 + h * k1 / 2., t0 + h / 2.)
  */
-  __pyx_tuple__12 = PyTuple_Pack(9, __pyx_n_s_x0, __pyx_n_s_f, __pyx_n_s_h, __pyx_n_s_t0, __pyx_n_s_k1, __pyx_n_s_k2, __pyx_n_s_k3, __pyx_n_s_k4, __pyx_n_s_st); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(9, __pyx_n_s_x0, __pyx_n_s_f, __pyx_n_s_h, __pyx_n_s_t0, __pyx_n_s_k1, __pyx_n_s_k2, __pyx_n_s_k3, __pyx_n_s_k4, __pyx_n_s_st); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(4, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_step, 22, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(4, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_step, 18, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 18, __pyx_L1_error)
 
-  /* "astrotk/simulator/integrators/RK4.pyx":38
+  /* "astrotk/simulator/integrators/RK4.pyx":34
  * # NumPy arrays, and b) make some attribute access like f.shape[0] much
  * # more efficient. (In this example this doesn't matter though.)
  * def integrate(x0, f, t):             # <<<<<<<<<<<<<<
  *     sol = np.array([x0])
  *     for idx in range(len(t) - 1):
  */
-  __pyx_tuple__14 = PyTuple_Pack(6, __pyx_n_s_x0, __pyx_n_s_f, __pyx_n_s_t, __pyx_n_s_sol, __pyx_n_s_idx, __pyx_n_s_t0_2); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(6, __pyx_n_s_x0, __pyx_n_s_f, __pyx_n_s_t, __pyx_n_s_sol, __pyx_n_s_idx, __pyx_n_s_t0_2); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_integrate, 38, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_integrate, 34, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 34, __pyx_L1_error)
 
-  /* "astrotk/simulator/integrators/RK4.pyx":46
+  /* "astrotk/simulator/integrators/RK4.pyx":42
  *     return np.array(sol)
  * 
- * def odeint(f, y0, t, args):             # <<<<<<<<<<<<<<
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):             # <<<<<<<<<<<<<<
  *     sol = np.array([y0])
  *     if args:
  */
-  __pyx_tuple__16 = PyTuple_Pack(10, __pyx_n_s_f, __pyx_n_s_y0, __pyx_n_s_t, __pyx_n_s_args, __pyx_n_s_sol, __pyx_n_s_f_2, __pyx_n_s_f_2, __pyx_n_s_f_2, __pyx_n_s_idx, __pyx_n_s_t0_2); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(10, __pyx_n_s_f, __pyx_n_s_y0, __pyx_n_s_t, __pyx_n_s_args, __pyx_n_s_sol, __pyx_n_s_f_2, __pyx_n_s_f_2, __pyx_n_s_f_2, __pyx_n_s_idx, __pyx_n_s_t0_2); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(4, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_odeint, 46, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(4, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_astrotk_simulator_integrator, __pyx_n_s_odeint, 42, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -6515,7 +6540,7 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
   __pyx_type_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint.tp_dictoffset && __pyx_type_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_7astrotk_9simulator_11integrators_3RK4___pyx_scope_struct__odeint.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
@@ -6782,69 +6807,69 @@ if (!__Pyx_RefNanny) {
 
   /* "astrotk/simulator/integrators/RK4.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
+ * cimport numpy as np
  * 
- * # "cimport" is used to import special compile-time information
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":11
+  /* "astrotk/simulator/integrators/RK4.pyx":7
  * # DTYPE for this, which is assigned to the usual NumPy runtime
  * # type info object.
  * DTYPE = np.float             # <<<<<<<<<<<<<<
  * 
  * # "ctypedef" assigns a corresponding compile-time type to DTYPE_t. For
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE, __pyx_t_2) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":22
+  /* "astrotk/simulator/integrators/RK4.pyx":18
  * # cpdef np.ndarray (*f_type)(np.array, np.ndarray)
  * 
  * def step(np.ndarray[np.float64_t] x0, f, double h, t0=0.):             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[np.float64_t] k1 = f(x0, t0)
  *     cdef np.ndarray[np.float64_t] k2 = f(x0 + h * k1 / 2., t0 + h / 2.)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_1step, NULL, __pyx_n_s_astrotk_simulator_integrators_RK); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_1step, NULL, __pyx_n_s_astrotk_simulator_integrators_RK); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_step, __pyx_t_2) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_step, __pyx_t_2) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":38
+  /* "astrotk/simulator/integrators/RK4.pyx":34
  * # NumPy arrays, and b) make some attribute access like f.shape[0] much
  * # more efficient. (In this example this doesn't matter though.)
  * def integrate(x0, f, t):             # <<<<<<<<<<<<<<
  *     sol = np.array([x0])
  *     for idx in range(len(t) - 1):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_3integrate, NULL, __pyx_n_s_astrotk_simulator_integrators_RK); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_3integrate, NULL, __pyx_n_s_astrotk_simulator_integrators_RK); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_integrate, __pyx_t_2) < 0) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_integrate, __pyx_t_2) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "astrotk/simulator/integrators/RK4.pyx":46
+  /* "astrotk/simulator/integrators/RK4.pyx":42
  *     return np.array(sol)
  * 
- * def odeint(f, y0, t, args):             # <<<<<<<<<<<<<<
+ * def odeint(f, np.ndarray[np.float64_t] y0, t, args):             # <<<<<<<<<<<<<<
  *     sol = np.array([y0])
  *     if args:
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_5odeint, NULL, __pyx_n_s_astrotk_simulator_integrators_RK); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7astrotk_9simulator_11integrators_3RK4_5odeint, NULL, __pyx_n_s_astrotk_simulator_integrators_RK); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_odeint, __pyx_t_2) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_odeint, __pyx_t_2) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "astrotk/simulator/integrators/RK4.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
+ * cimport numpy as np
  * 
- * # "cimport" is used to import special compile-time information
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
