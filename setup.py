@@ -1,7 +1,8 @@
 # from setuptools import setup
-from setuptools import find_packages
 from distutils.core import setup
 from distutils.extension import Extension
+
+from setuptools import find_packages
 
 try:
     from Cython.Distutils import build_ext
@@ -33,9 +34,9 @@ else:
 
 setup(
     name='astrotk',
-    version='0.10.0',
-    packages=['astrotk', 'astrotk.nbody', 'astrotk.nbody.simulator',
-              'astrotk.tests', 'astrotk.simulator', 'astrotk.AE4878',
+    version='0.0.10',
+    packages=['astrotk',
+              'astrotk.tests', 'astrotk.simulator',
               'astrotk.twobody', 'astrotk.twobody.utils', 'astrotk.simulator.eom'] + find_packages(),
     package_dir={'': 'src'},
     url='',
